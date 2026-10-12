@@ -1,7 +1,7 @@
 <!DOCTYPE html><html dir="rtl" lang="ar" style=""><head>
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Aumet Pulse — نبض صيدليتك | إدارة ذكية، أرباح حقيقية، وبلا تعقيد</title>
+    <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport">
+    <title>Aumet Pulse — تبادل P2P بين الصيدليات | حوّل المخزون الراكد إلى كاش</title>
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Tajawal:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
@@ -15,11 +15,31 @@
       html[dir="ltr"] body {
         font-family: 'Plus Jakarta Sans', sans-serif;
       }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
       body {
         background-color: #ffffff;
         color: #0f172a;
         overflow-x: hidden;
         transition: direction 0.2s ease, opacity 0.2s ease;
+      }
+      a, button, summary, [role="button"] {
+        touch-action: manipulation;
+      }
+      input, select, textarea {
+        font-size: 16px;
+      }
+      @media (hover: none) {
+        .card-glow:hover {
+          transform: none;
+        }
+      }
+      .safe-bottom {
+        padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+      }
+      section[id] {
+        scroll-margin-top: 4.25rem;
       }
       .subtle-grid {
         background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
@@ -54,45 +74,51 @@
         border-color: #04bca6;
         box-shadow: 0 0 0 3px rgba(4, 188, 166, 0.18);
       }
+      @keyframes match-pulse {
+        0%, 100% { opacity: 0.35; transform: scaleX(0.92); }
+        50% { opacity: 1; transform: scaleX(1); }
+      }
+      .match-pulse {
+        animation: match-pulse 1.8s ease-in-out infinite;
+        transform-origin: center;
+      }
     </style>
     </head>
     <body class="antialiased selection:bg-[#04bca6]/20 selection:text-[#006b5e]">
     <!-- 2. SLEEK GLASSMORPHIC NAVBAR -->
-    <header class="sticky top-0 z-50 bg-white/85 backdrop-blur-md border-b border-slate-100 transition-all duration-300" id="main-header">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3.5 flex items-center justify-between gap-4">
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 transition-all duration-300" id="main-header">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3.5 flex items-center justify-between gap-2 sm:gap-4">
     <!-- Brand Logo -->
-    <a class="flex items-center gap-2.5 shrink-0 group" href="#">
-    <img alt="Pulse Logo" class="h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA16VMmSvZ2g_WrhuQ0FjqoYqcPK8Uk6n359-uXA0Pb80rI_2DMoOLMzWZk9IoyIHd1YNpuCWvQqKZMlT0GVSK_YocyyKmsNsjPQuinHA76fdb9IpaP-9YhK8Y7kml__WHH_jdgug2TPOfvjNywD_C7zLuAbzphzCjsVR1OQVAFY1Tj2WtB2g7SG4S-GdsvJf8EqnDwSa9xT6i8I4UdK1Te1f67zrzBE9H4kNtLTQLIJNS0-5hC-AF2CXJnTpLG04zt7w">
-    <div class="flex items-center gap-1.5">
-    <span class="text-2xl font-black tracking-tight text-slate-900">Pulse</span>
-    </div>
+    <a class="flex items-center gap-2 shrink-0 group min-h-11" href="#overview">
+    <img alt="Pulse Logo" class="h-7 sm:h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA16VMmSvZ2g_WrhuQ0FjqoYqcPK8Uk6n359-uXA0Pb80rI_2DMoOLMzWZk9IoyIHd1YNpuCWvQqKZMlT0GVSK_YocyyKmsNsjPQuinHA76fdb9IpaP-9YhK8Y7kml__WHH_jdgug2TPOfvjNywD_C7zLuAbzphzCjsVR1OQVAFY1Tj2WtB2g7SG4S-GdsvJf8EqnDwSa9xT6i8I4UdK1Te1f67zrzBE9H4kNtLTQLIJNS0-5hC-AF2CXJnTpLG04zt7w">
+    <span class="text-xl sm:text-2xl font-black tracking-tight text-slate-900">Pulse</span>
     </a>
     <!-- CTAs & Language Switcher Dropdown -->
-    <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+    <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
     <!-- MODERN LANGUAGE SWITCHER DROPDOWN -->
     <div class="relative inline-block text-start" id="lang-dropdown-wrapper">
-    <button aria-expanded="false" aria-haspopup="true" class="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 bg-slate-100/90 hover:bg-slate-200/80 border border-slate-200/80 transition-all focus:outline-none focus:ring-2 focus:ring-[#04bca6]/40 cursor-pointer shadow-xs" id="lang-menu-btn" type="button">
-    <span class="material-symbols-outlined text-[17px] text-[#006b5e]">language</span>
-    <span class="font-bold text-slate-800" id="current-lang-label">العربية</span>
-    <span class="material-symbols-outlined text-[16px] text-slate-400 transition-transform duration-200" id="lang-chevron">expand_more</span>
+    <button aria-expanded="false" aria-haspopup="true" aria-label="Language" class="inline-flex items-center justify-center gap-1 sm:gap-2 min-h-11 min-w-11 sm:min-w-0 px-2.5 sm:px-3 py-2 rounded-full text-xs font-semibold text-slate-700 bg-slate-100/90 hover:bg-slate-200/80 border border-slate-200/80 transition-all focus:outline-none focus:ring-2 focus:ring-[#04bca6]/40 cursor-pointer shadow-xs" id="lang-menu-btn" type="button">
+    <span class="material-symbols-outlined text-[20px] sm:text-[17px] text-[#006b5e]">language</span>
+    <span class="hidden sm:inline font-bold text-slate-800" id="current-lang-label">العربية</span>
+    <span class="hidden sm:inline material-symbols-outlined text-[16px] text-slate-400 transition-transform duration-200" id="lang-chevron">expand_more</span>
     </button>
     <!-- Dropdown Menu -->
-    <div class="hidden absolute top-full mt-2 w-44 rounded-2xl bg-white/95 backdrop-blur-lg border border-slate-200/90 shadow-xl shadow-slate-900/10 py-1.5 z-50 transition-all ltr:left-0 rtl:right-0" id="lang-menu">
-    <button class="lang-option w-full flex items-center justify-between px-3.5 py-2 text-xs font-medium text-slate-700 hover:bg-teal-50/80 hover:text-[#006b5e] transition-colors cursor-pointer" data-lang="ar" onclick="changeLanguage('ar')" type="button">
+    <div class="hidden absolute top-full mt-2 w-44 rounded-2xl bg-white/95 backdrop-blur-lg border border-slate-200/90 shadow-xl shadow-slate-900/10 py-1.5 z-50 transition-all end-0" id="lang-menu">
+    <button class="lang-option w-full flex items-center justify-between px-3.5 py-3 min-h-11 text-sm font-medium text-slate-700 hover:bg-teal-50/80 hover:text-[#006b5e] transition-colors cursor-pointer" data-lang="ar" onclick="changeLanguage('ar')" type="button">
     <div class="flex items-center gap-2.5">
     <span class="text-sm">🇸🇦</span>
     <span class="font-bold">العربية</span>
     </div>
     <span class="check-icon material-symbols-outlined text-[#04bca6] text-[17px]">check</span>
     </button>
-    <button class="lang-option w-full flex items-center justify-between px-3.5 py-2 text-xs font-medium text-slate-700 hover:bg-teal-50/80 hover:text-[#006b5e] transition-colors cursor-pointer" data-lang="en" onclick="changeLanguage('en')" type="button">
+    <button class="lang-option w-full flex items-center justify-between px-3.5 py-3 min-h-11 text-sm font-medium text-slate-700 hover:bg-teal-50/80 hover:text-[#006b5e] transition-colors cursor-pointer" data-lang="en" onclick="changeLanguage('en')" type="button">
     <div class="flex items-center gap-2.5">
     <span class="text-sm">🇬🇧</span>
     <span class="">English</span>
     </div>
     <span class="check-icon hidden material-symbols-outlined text-[#04bca6] text-[17px]">check</span>
     </button>
-    <button class="lang-option w-full flex items-center justify-between px-3.5 py-2 text-xs font-medium text-slate-700 hover:bg-teal-50/80 hover:text-[#006b5e] transition-colors cursor-pointer" data-lang="fr" onclick="changeLanguage('fr')" type="button">
+    <button class="lang-option w-full flex items-center justify-between px-3.5 py-3 min-h-11 text-sm font-medium text-slate-700 hover:bg-teal-50/80 hover:text-[#006b5e] transition-colors cursor-pointer" data-lang="fr" onclick="changeLanguage('fr')" type="button">
     <div class="flex items-center gap-2.5">
     <span class="text-sm">🇫🇷</span>
     <span class="">Français</span>
@@ -101,46 +127,47 @@
     </button>
     </div>
     </div>
-    <a class="text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 px-2 sm:px-3 py-2 rounded-full transition-colors" data-i18n="nav_login" href="#overview" onclick="focusHeroPhone()">تسجيل الدخول</a>
-    <a class="hidden sm:inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#04bca6] hover:text-[#008e7d] border border-teal-200 hover:border-[#04bca6] hover:bg-teal-50/80 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full transition-all duration-200" href="#book-demo"><span class="material-symbols-outlined text-[17px] text-[#04bca6]">calendar_today</span><span class="" data-i18n="nav_demo_btn">احجز موعدًا للتجربة</span></a><a class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-white bg-[#04bca6] hover:bg-[#008e7d] shadow-sm hover:shadow-teal-600/20 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all duration-200" href="#overview" onclick="focusHeroPhone()">
-    <span class="material-symbols-outlined text-[17px]">rocket_launch</span>
-    <span class="" data-i18n="nav_start_free">ابدأ مجاناً</span>
+    <a class="hidden sm:inline-flex text-sm font-semibold text-slate-600 hover:text-slate-900 px-3 py-2 min-h-11 items-center rounded-full transition-colors" data-i18n="nav_login" href="#overview" onclick="focusHeroPhone()">تسجيل الدخول</a>
+    <a class="hidden sm:inline-flex items-center gap-1.5 text-sm font-bold text-[#04bca6] hover:text-[#008e7d] border border-teal-200 hover:border-[#04bca6] hover:bg-teal-50/80 px-4 py-2.5 min-h-11 rounded-full transition-all duration-200" href="#book-demo"><span class="material-symbols-outlined text-[17px] text-[#04bca6]">calendar_today</span><span data-i18n="nav_demo_btn">احجز موعدًا للتجربة</span></a>
+    <a class="inline-flex items-center justify-center gap-1 min-h-11 text-sm font-bold text-white bg-[#04bca6] hover:bg-[#008e7d] shadow-sm px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all duration-200" href="#overview" onclick="focusHeroPhone()">
+    <span class="hidden sm:inline material-symbols-outlined text-[18px]">rocket_launch</span>
+    <span data-i18n="nav_start_free">ابدأ مجاناً</span>
     </a>
     </div>
     </div>
     </header>
     <main class="lang-fade">
     <!-- 3. HERO SECTION -->
-    <section class="relative pt-12 pb-20 sm:pt-16 sm:pb-24 bg-gradient-to-b from-[#f8fafc] via-white to-white border-b border-slate-100" id="overview">
+    <section class="relative pt-7 pb-8 sm:pt-16 sm:pb-24 bg-gradient-to-b from-[#f8fafc] via-white to-white border-b border-slate-100" id="overview">
     <div class="absolute inset-0 subtle-grid opacity-60 pointer-events-none z-0"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
     <!-- Text content column -->
     
     <!-- Modern Clean Hero Dashboard Mockup -->
-    <div class="lg:col-span-6 space-y-6 content-align"><div class="inline-flex items-center gap-2 bg-teal-50 border border-teal-200/80 px-4 py-1.5 rounded-full text-xs font-bold text-[#006b5e] shadow-xs"><span class="material-symbols-outlined text-[16px] text-[#04bca6]">auto_awesome</span><span data-i18n="hero_badge" class="">منصة متكاملة للصيدليات</span></div><h1 class="font-black text-slate-900 leading-tight tracking-tight max-w-xl text-3xl sm:text-4xl lg:text-4xl"><span data-i18n="hero_title_1" class="text-[#006b5e]">صيدليتك كلها..</span> <span class="text-[#04bca6]" data-i18n="hero_title_2">في مكان واحد</span></h1><p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl font-normal" data-i18n="hero_subtitle">كل ما تحتاجه لإدارة صيدليتك في مكان واحد: نقطة البيع، إدارة المخزون، والشراء المباشر من الموزعين المعتمدين عبر سوق أومِت، مع كاش باك حقيقي يساعدك على تغطية تكلفة اشتراكك.</p><div class="pt-1 w-full space-y-4">
+    <div class="lg:col-span-6 space-y-4 sm:space-y-6 content-align"><div class="inline-flex items-center gap-1.5 bg-teal-50 border border-teal-200/80 px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-bold text-[#006b5e] shadow-xs"><span class="material-symbols-outlined text-[16px] text-[#04bca6]">swap_horiz</span><span data-i18n="hero_badge">تبادل صيدلية لصيدلية (P2P)</span></div><h1 class="font-black text-slate-900 leading-[1.25] tracking-tight max-w-xl text-[1.65rem] sm:text-4xl lg:text-[2.6rem]"><span data-i18n="hero_title_1" class="text-[#006b5e]">لا تشطب المخزون الراكد.</span> <span class="text-[#04bca6]" data-i18n="hero_title_2">بعه لصيدلية تحتاجه.</span></h1><p class="text-slate-600 text-[13px] sm:text-base leading-relaxed max-w-xl font-normal" data-i18n="hero_subtitle">Pulse يطابق أصنافك البطيئة أو قريبة الانتهاء مع صيدليات موثّقة تبحث عنها اليوم. المبلغ يُحجز في المحفظة، والشحن الطبي المبرّد يوصل الطلب — بدل شطب رأس المال.</p><div class="pt-1 w-full space-y-3 sm:space-y-4">
     <form id="hero-onboard-form" novalidate="" onsubmit="return startHeroOnboarding(event)">
-    <div class="bg-white rounded-2xl border border-slate-200/90 shadow-lg shadow-slate-200/40 p-4 sm:p-5">
+    <div class="bg-white rounded-2xl border border-slate-200/90 shadow-lg shadow-slate-200/40 p-3.5 sm:p-5">
     <p class="text-sm font-black text-[#006b5e] leading-snug" data-i18n="hero_phone_title">ابدأ برقم جوالك</p>
-    <p class="text-xs text-slate-500 mt-1 mb-3.5 leading-relaxed" data-i18n="hero_phone_hint">أدخل الرقم فقط. نحدد بعدها الخطوة التالية تلقائياً.</p>
-    <div class="flex flex-col sm:flex-row items-stretch gap-2.5">
-    <div class="hero-phone-row flex-1 min-w-0 flex items-stretch h-12 rounded-full border border-slate-200 bg-white overflow-visible transition-all">
+    <p class="text-xs text-slate-500 mt-1 mb-3 leading-relaxed" data-i18n="hero_phone_hint">أدخل الرقم فقط. نحدد بعدها الخطوة التالية تلقائياً.</p>
+    <div class="flex flex-col items-stretch gap-2.5">
+    <div class="hero-phone-row flex-1 min-w-0 flex items-stretch min-h-12 h-12 rounded-full border border-slate-200 bg-white overflow-visible transition-all">
     <div class="relative shrink-0" id="hero-country-wrapper">
-    <button aria-expanded="false" aria-haspopup="listbox" class="h-full inline-flex items-center gap-1.5 px-3 text-sm font-bold text-slate-700 hover:bg-slate-50 rounded-s-full transition-colors cursor-pointer" id="hero-country-btn" type="button">
+    <button aria-expanded="false" aria-haspopup="listbox" class="h-full min-h-12 inline-flex items-center gap-1.5 px-3 text-sm font-bold text-slate-700 hover:bg-slate-50 rounded-s-full transition-colors cursor-pointer" id="hero-country-btn" type="button">
     <span aria-hidden="true" id="hero-country-flag">🇸🇦</span>
     <span class="font-mono text-[13px] text-slate-600" id="hero-country-dial" dir="ltr">+966</span>
     <span class="material-symbols-outlined text-[16px] text-slate-400 transition-transform duration-200" id="hero-country-chevron">expand_more</span>
     </button>
     <div class="hidden absolute top-full start-0 mt-2 w-56 rounded-2xl bg-white/95 backdrop-blur-lg border border-slate-200/90 shadow-xl shadow-slate-900/10 py-1.5 z-50" id="hero-country-menu" role="listbox">
-    <button class="hero-country-option w-full flex items-center justify-between px-3.5 py-2.5 text-xs font-medium text-slate-700 hover:bg-teal-50/80 transition-colors cursor-pointer" data-country="sa" role="option" type="button">
+    <button class="hero-country-option w-full flex items-center justify-between px-3.5 py-3 min-h-11 text-sm font-medium text-slate-700 hover:bg-teal-50/80 transition-colors cursor-pointer" data-country="sa" role="option" type="button">
     <span class="flex items-center gap-2.5"><span>🇸🇦</span><span data-i18n="hero_country_sa">السعودية</span></span>
     <span class="font-mono text-slate-500" dir="ltr">+966</span>
     </button>
-    <button class="hero-country-option w-full flex items-center justify-between px-3.5 py-2.5 text-xs font-medium text-slate-700 hover:bg-teal-50/80 transition-colors cursor-pointer" data-country="jo" role="option" type="button">
+    <button class="hero-country-option w-full flex items-center justify-between px-3.5 py-3 min-h-11 text-sm font-medium text-slate-700 hover:bg-teal-50/80 transition-colors cursor-pointer" data-country="jo" role="option" type="button">
     <span class="flex items-center gap-2.5"><span>🇯🇴</span><span data-i18n="hero_country_jo">الأردن</span></span>
     <span class="font-mono text-slate-500" dir="ltr">+962</span>
     </button>
-    <button class="hero-country-option w-full flex items-center justify-between px-3.5 py-2.5 text-xs font-medium text-slate-700 hover:bg-teal-50/80 transition-colors cursor-pointer" data-country="eg" role="option" type="button">
+    <button class="hero-country-option w-full flex items-center justify-between px-3.5 py-3 min-h-11 text-sm font-medium text-slate-700 hover:bg-teal-50/80 transition-colors cursor-pointer" data-country="eg" role="option" type="button">
     <span class="flex items-center gap-2.5"><span>🇪🇬</span><span data-i18n="hero_country_eg">مصر</span></span>
     <span class="font-mono text-slate-500" dir="ltr">+20</span>
     </button>
@@ -148,9 +175,9 @@
     </div>
     <span class="w-px bg-slate-200 my-2.5 shrink-0"></span>
     <label class="sr-only" for="hero-phone" data-i18n="hero_phone_label">رقم الجوال</label>
-    <input aria-describedby="hero-phone-error" autocomplete="tel" class="flex-1 min-w-0 h-full bg-transparent border-0 px-3 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none" dir="ltr" id="hero-phone" inputmode="numeric" maxlength="12" name="phone" placeholder="5X XXX XXXX" required="" type="tel">
+    <input aria-describedby="hero-phone-error" autocomplete="tel" class="flex-1 min-w-0 h-full bg-transparent border-0 px-3 text-base text-slate-800 placeholder:text-slate-400 focus:outline-none" dir="ltr" id="hero-phone" inputmode="numeric" maxlength="12" name="phone" placeholder="5X XXX XXXX" required="" type="tel">
     </div>
-    <button class="inline-flex items-center justify-center gap-1.5 shrink-0 h-12 bg-[#04bca6] hover:bg-[#008e7d] text-white font-bold text-sm px-5 rounded-full shadow-md shadow-teal-500/20 transition-all cursor-pointer" id="hero-submit-btn" type="submit">
+    <button class="inline-flex items-center justify-center gap-1.5 w-full min-h-12 h-12 bg-[#04bca6] hover:bg-[#008e7d] text-white font-bold text-base px-5 rounded-full shadow-md shadow-teal-500/20 transition-all cursor-pointer" id="hero-submit-btn" type="submit">
     <span data-i18n="hero_phone_btn">ابدأ</span>
     <span class="material-symbols-outlined text-[18px] rtl:-scale-x-100">arrow_forward</span>
     </button>
@@ -161,159 +188,219 @@
     </form>
     <div class="rounded-2xl border border-dashed border-slate-200 bg-slate-50/70 px-4 py-3.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
     <div class="min-w-0">
-    <p class="text-xs font-bold text-slate-700" data-i18n="hero_demo_label">هل تفضّل مشاهدة المنصة أولاً؟</p>
-    <p class="text-[11px] text-slate-500 mt-0.5" data-i18n="hero_demo_time">عرض حي خلال 15 دقيقة لشرح الربط وسوق أومِت</p>
+    <p class="text-xs font-bold text-slate-700" data-i18n="hero_demo_label">هل تفضّل رؤية مطابقة حقيقية أولاً؟</p>
+    <p class="text-[11px] text-slate-500 mt-0.5" data-i18n="hero_demo_time">15 دقيقة: نأخذ صنفاً راكداً من صيدليتك ونريك من يحتاجه الآن</p>
     </div>
-    <a class="inline-flex items-center justify-center gap-1.5 shrink-0 h-10 text-xs sm:text-sm font-bold text-[#04bca6] hover:text-[#008e7d] bg-white border border-teal-200 hover:border-[#04bca6] hover:bg-teal-50/80 px-4 rounded-full transition-all" href="#book-demo">
+    <a class="inline-flex items-center justify-center gap-1.5 w-full sm:w-auto min-h-11 h-11 text-sm font-bold text-[#04bca6] hover:text-[#008e7d] bg-white border border-teal-200 hover:border-[#04bca6] hover:bg-teal-50/80 px-4 rounded-full transition-all" href="#book-demo">
     <span class="material-symbols-outlined text-[17px] text-[#04bca6]">calendar_today</span>
     <span data-i18n="hero_cta_demo">احجز موعدًا للتجربة</span>
     </a>
     </div>
     </div>
-    <div class="pt-4 flex flex-wrap items-center gap-4 text-xs text-slate-500 border-t border-slate-100"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-emerald-600 text-[16px]">check_circle</span><span data-i18n="hero_pill_nocard" class="">بدون بطاقة بنكية</span></div><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-teal-600 text-[16px]">offline_bolt</span><span data-i18n="hero_pill_offline" class="">يعمل دون إنترنت (Offline-First)</span></div><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[#04bca6] text-[16px]">bolt</span><span data-i18n="hero_pill_instant" class="">تكامل مباشر مع سوق أومِت</span></div></div></div><div class="lg:col-span-6 relative">
-    <div class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/90 shadow-xl shadow-slate-200/50 card-glow relative">
-    <!-- Header bar of dashboard -->
-    <div class="flex items-center justify-between pb-4 border-b border-slate-100">
-    <div class="flex items-center gap-3">
-    <div class="w-9 h-9 rounded-2xl bg-teal-50 border border-teal-100 flex items-center justify-center text-[#006b5e]">
-    <img alt="Pulse" class="h-5 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI_Z8PFXieU_18k4HMies8IMRttL7-KdU1SjLn9Nm-TBjToGNNqkwAXSBH6x_i2s0EvcYPjapslDJmrULW-i0CvQ4vOU5coT9C4ZENkc_FpeTeVRp9A5NPt2sE3WPucM1yFHEYi24gGTA1OeMCwcrr1PEAcNZc6kFZe_x1SzvklleMY3s1Y7bcpgiHRegeWmWrDoWRPtXTLKQpt5Of1QkKjWgaHmFagiw42-nyzzXOPZZhZoOqut55q6uJot-J2MZyvg">
+    <div class="pt-3 sm:pt-4 flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-2 sm:gap-4 text-xs text-slate-500 border-t border-slate-100"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-emerald-600 text-[16px]">verified_user</span><span data-i18n="hero_pill_nocard">تسوية مؤمّنة في المحفظة</span></div><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-teal-600 text-[16px]">ac_unit</span><span data-i18n="hero_pill_offline">شحن طبي مبرّد</span></div><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[#04bca6] text-[16px]">storefront</span><span data-i18n="hero_pill_instant">صيدليات موثّقة فقط</span></div></div></div><div class="lg:col-span-6 relative">
+    <div class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-7 border border-slate-200/90 shadow-lg sm:shadow-xl shadow-slate-200/50 card-glow relative">
+    <div class="flex items-start sm:items-center justify-between gap-2 pb-3 sm:pb-4 border-b border-slate-100">
+    <div class="flex items-center gap-2.5 min-w-0">
+    <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-2xl bg-teal-50 border border-teal-100 flex items-center justify-center text-[#006b5e] shrink-0">
+    <span class="material-symbols-outlined text-[20px]">swap_horiz</span>
     </div>
-    <div class="content-align">
-    <h4 class="text-xs font-bold text-slate-900" data-i18n="mockup_title">لوحة Pulse المباشرة — فرع الشفاء</h4>
-    <p class="text-[11px] text-slate-400" data-i18n="mockup_status">مزامنة تلقائية ومستمرة • متصل الآن&nbsp;</p>
+    <div class="content-align min-w-0">
+    <h4 class="text-xs font-bold text-slate-900 truncate" data-i18n="mockup_title">مطابقة P2P مباشرة — الرياض</h4>
+    <p class="text-[11px] text-slate-400 truncate" data-i18n="mockup_status">صيدلية النور ↔ صيدلية الشفاء 2</p>
     </div>
     </div>
-    <span class="text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/70 px-2.5 py-0.5 rounded-full flex items-center gap-1">
+    <span class="shrink-0 text-[10px] sm:text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/70 px-2 py-0.5 rounded-full flex items-center gap-1">
     <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
-    <span class="" data-i18n="mockup_live">مباشر</span>
+    <span data-i18n="mockup_live">مطابقة حيّة</span>
     </span>
     </div>
-    <!-- 3 Clean Metrics Pills -->
-    <div class="grid grid-cols-3 gap-3 my-4">
-    <div class="bg-slate-50/80 p-3.5 rounded-2xl border border-slate-100 content-align">
-    <div class="text-[11px] text-slate-500 font-medium" data-i18n="metric_sales_label">مبيعات اليوم</div>
-    <div class="text-lg font-black text-slate-900 font-mono mt-0.5" data-i18n="metric_sales_val">48,250$</div>
-    <div class="text-[10px] font-bold text-emerald-600 mt-0.5 flex items-center gap-0.5">
-    <span class="">↑ 18.4%</span>
-    <span class="text-slate-400 font-normal" data-i18n="metric_sales_growth">نمو</span>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4">
+    <div class="bg-slate-50/80 p-3.5 rounded-2xl border border-slate-100 content-align space-y-2">
+    <div class="text-[10px] font-bold uppercase tracking-wide text-slate-400" data-i18n="p2p_from_label">عندك (راكد)</div>
+    <div class="text-sm font-black text-slate-900" data-i18n="p2p_from_name">صيدلية النور</div>
+    <div class="text-xs font-bold text-slate-800" data-i18n="mockup_drug_name">أوجمنتين 1 جم × 15 عبوة</div>
+    <div class="text-[11px] text-amber-700" data-i18n="p2p_from_status">راكد 4 أشهر • صلاحية 45 يوماً</div>
+    </div>
+    <div class="bg-teal-50/60 p-3.5 rounded-2xl border border-teal-100 content-align space-y-2">
+    <div class="text-[10px] font-bold uppercase tracking-wide text-teal-700/70" data-i18n="p2p_to_label">عندهم (نقص)</div>
+    <div class="text-sm font-black text-slate-900" data-i18n="p2p_to_name">صيدلية الشفاء 2</div>
+    <div class="text-xs font-bold text-slate-800" data-i18n="p2p_to_need">يحتاج 15 عبوة اليوم</div>
+    <div class="text-[11px] text-[#006b5e]" data-i18n="p2p_to_patient">مريض ينتظر • 2.4 كم</div>
     </div>
     </div>
-    <div class="bg-slate-50/80 p-3.5 rounded-2xl border border-slate-100 content-align">
-    <div class="text-[11px] text-slate-500 font-medium" data-i18n="metric_profit_label">صافي الربح</div>
-    <div class="text-lg font-black text-[#006b5e] font-mono mt-0.5" data-i18n="metric_profit_val">9,640$</div>
-    <div class="text-[10px] font-bold text-teal-600 mt-0.5" data-i18n="metric_profit_margin">هامش 20%</div>
-    </div>
-    <div class="bg-slate-50/80 p-3.5 rounded-2xl border border-slate-100 content-align">
-    <div class="text-[11px] text-slate-500 font-medium" data-i18n="metric_cashback_label">الكاش باك المتاح</div>
-    <div class="text-lg font-black text-amber-600 font-mono mt-0.5" data-i18n="metric_cashback_val">3,860$</div>
-    <div class="text-[10px] font-bold text-amber-700 mt-0.5" data-i18n="metric_cashback_status">جاهز للخصم</div>
+    <div class="flex items-center justify-center py-1" aria-hidden="true">
+    <div class="h-px w-full bg-teal-100 relative">
+    <span class="absolute inset-x-0 top-1/2 -translate-y-1/2 mx-auto w-24 h-1 rounded-full bg-[#04bca6] match-pulse"></span>
     </div>
     </div>
-    <!-- Smart Re-stock Alert -->
     <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-3.5 content-align space-y-2">
     <div class="flex items-center justify-between text-xs font-bold">
     <span class="text-[#006b5e] flex items-center gap-1.5">
-    <span class="material-symbols-outlined text-[18px]">auto_awesome</span>
-    <span class="" data-i18n="mockup_reorder_title">أعد الطلب بذكاء قبل نفاد المخزون<br></span>
+    <span class="material-symbols-outlined text-[18px]">handshake</span>
+    <span data-i18n="p2p_match_label">تم التطابق</span>
     </span>
-    <span class="text-[10px] text-emerald-700 bg-white px-2 py-0.5 rounded-full border border-teal-100 font-bold" data-i18n="mockup_discount_tag">خصم 24%</span>
+    <span class="text-[10px] text-emerald-700 bg-white px-2 py-0.5 rounded-full border border-teal-100 font-bold font-mono" data-i18n="p2p_escrow">+420$ في الضمان</span>
     </div>
-    <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-teal-100/80 text-xs">
-    <div>
-    <div class="font-bold text-slate-800" data-i18n="mockup_drug_name">أوجمنتين 1 جم (15 عبوة)</div>
-    <div class="text-[11px] text-slate-500" data-i18n="mockup_distributor">المستودع الأفضل: المتحدة للتوزيع</div>
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 bg-white p-2.5 rounded-xl border border-teal-100/80 text-xs">
+    <div class="min-w-0">
+    <div class="font-bold text-slate-800" data-i18n="p2p_ship">شحن مبرّد خلال 3 ساعات</div>
+    <div class="text-[11px] text-slate-500" data-i18n="p2p_secured">المحفظة تحجز المبلغ حتى تأكيد الاستلام</div>
     </div>
-    <span class="bg-[#04bca6] hover:bg-[#008e7d] text-white text-[11px] font-bold px-3 py-1.5 rounded-full transition-colors cursor-pointer" data-i18n="mockup_order_btn">
-    طلب بضغطة زر
-    </span>
+    <span class="self-start sm:self-auto bg-[#04bca6] text-white text-[11px] font-bold px-3 py-1.5 rounded-full shrink-0" data-i18n="p2p_confirm_btn">تأكيد التبادل</span>
     </div>
     </div>
-    <!-- Subtle bottom info -->
-    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+    <div class="mt-3 sm:mt-4 pt-3 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 text-[11px] text-slate-500">
     <span class="flex items-center gap-1.5 text-[#006b5e] font-semibold">
     <span class="material-symbols-outlined text-[15px]">security</span>
-    <span class="" data-i18n="mockup_security">بيانات صيدليتك بأمان، حتى بدون إنترنت&nbsp;</span><br class="Apple-interchange-newline" style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-weight: 400;">
+    <span data-i18n="mockup_security">تسوية مؤمّنة • صيدليات موثّقة فقط</span>
     </span>
-    <span class="" data-i18n="mockup_updated">تحديث قبل لحظات</span>
+    <span data-i18n="mockup_updated">تحديث قبل لحظات</span>
     </div>
     </div>
     </div>
     </div>
     </div>
     </section>
-    <!-- 4. INSTANT 5-MINUTE DATA MIGRATION SECTION -->
-    <section class="py-20 sm:py-24 bg-white border-b border-slate-100" id="migration-showcase">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
-    <div class="inline-flex items-center gap-1.5 bg-teal-50 border border-teal-200/80 px-3.5 py-1 rounded-full text-xs font-bold text-[#006b5e]">
-    <span class="material-symbols-outlined text-[16px]">upload_file</span>
-    <span class="" data-i18n="mig_badge">بدون أدنى تعقيد أو تعطيل للبيع</span>
+    <!-- 4. PAS: PROBLEM + AGITATE -->
+    <section class="py-12 sm:py-20 lg:py-24 bg-white border-b border-slate-100" id="problem">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12 space-y-3">
+    <div class="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200/80 px-3.5 py-1 rounded-full text-xs font-bold text-amber-800">
+    <span class="material-symbols-outlined text-[16px]">warning</span>
+    <span data-i18n="pas_badge">المشكلة</span>
     </div>
-    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight" data-i18n="mig_title">
-    انقل بيانات صيدليتك ومخزونك في 5 دقائق
+    <h2 class="text-xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight" data-i18n="pas_title">
+    أنت تخسر رأس المال مرتين
     </h2>
-    <p class="text-slate-600 text-sm sm:text-base leading-relaxed" data-i18n="mig_subtitle">
-    استورد ملف Excel لنقل آلاف الأصناف والأسعار وتواريخ الصلاحية آلياً دون توقف عمليات الصرف والبيع.
+    <p class="text-slate-600 text-sm sm:text-base leading-relaxed" data-i18n="pas_subtitle">
+    مرة لأن الصنف راكد على رفّك. ومرة لأن مريضاً خرج فاضي من صيدلية مجاورة كانت تحتاجه.
+    </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5">
+    <article class="bg-slate-50 rounded-3xl border border-slate-200/90 p-5 sm:p-6 content-align">
+    <div class="w-10 h-10 rounded-2xl bg-white border border-slate-200 text-slate-700 flex items-center justify-center mb-4">
+    <span class="material-symbols-outlined text-[22px]">inventory_2</span>
+    </div>
+    <p class="text-[11px] font-bold text-slate-400 mb-1" data-i18n="pain1_tag">كاش ميت</p>
+    <h3 class="text-base font-black text-slate-900" data-i18n="pain1_title">المخزون الراكد يحبس رأس مالك</h3>
+    <p class="text-sm text-slate-600 mt-2 leading-relaxed" data-i18n="pain1_desc">عبوات تجلس شهوراً. لا تُصرف، ولا تُعاد للمورد، والكاش محبوس في الكرتون.</p>
+    </article>
+    <article class="bg-amber-50/70 rounded-3xl border border-amber-200/80 p-5 sm:p-6 content-align">
+    <div class="w-10 h-10 rounded-2xl bg-white border border-amber-100 text-amber-700 flex items-center justify-center mb-4">
+    <span class="material-symbols-outlined text-[22px]">event_busy</span>
+    </div>
+    <p class="text-[11px] font-bold text-amber-700/80 mb-1" data-i18n="pain2_tag">خسارة مؤكدة</p>
+    <h3 class="text-base font-black text-slate-900" data-i18n="pain2_title">الصلاحية تنتهي وأنت تنتظر الموزّع</h3>
+    <p class="text-sm text-slate-600 mt-2 leading-relaxed" data-i18n="pain2_desc">كل شهر شطب. الموزّع لا يسترجع البطيء، والرف يتحوّل إلى فاتورة هدر.</p>
+    </article>
+    <article class="bg-teal-50/50 rounded-3xl border border-teal-200/80 p-5 sm:p-6 content-align">
+    <div class="w-10 h-10 rounded-2xl bg-white border border-teal-100 text-[#006b5e] flex items-center justify-center mb-4">
+    <span class="material-symbols-outlined text-[22px]">wrong_location</span>
+    </div>
+    <p class="text-[11px] font-bold text-[#006b5e] mb-1" data-i18n="pain3_tag">فرصة ضائعة</p>
+    <h3 class="text-base font-black text-slate-900" data-i18n="pain3_title">صيدلية الشارع تحتاج ما ترميه</h3>
+    <p class="text-sm text-slate-600 mt-2 leading-relaxed" data-i18n="pain3_desc">مريض يطلع فاضي من صيدلية تبعد كيلومترين، وأنت تشطب نفس الصنف في اليوم التالي.</p>
+    </article>
+    </div>
+    </div>
+    </section>
+    <!-- 4b. PAS: SOLUTION — HOW P2P WORKS -->
+    <section class="py-12 sm:py-20 lg:py-24 bg-[#f8fafc] border-b border-slate-100" id="how-p2p">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-14 space-y-3">
+    <div class="inline-flex items-center gap-1.5 bg-teal-50 border border-teal-200/80 px-3.5 py-1 rounded-full text-xs font-bold text-[#006b5e]">
+    <span class="material-symbols-outlined text-[16px]">handshake</span>
+    <span data-i18n="how_badge">الحل: شبكة P2P</span>
+    </div>
+    <h2 class="text-xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight" data-i18n="how_title">
+    ثلاث خطوات. من الرف إلى الكاش.
+    </h2>
+    <p class="text-slate-600 text-sm sm:text-base leading-relaxed" data-i18n="how_subtitle">
+    هذا مسار التبادل نفسه: أدرج الصنف، Pulse يطابق صيدلية موثّقة، والمحفظة تحجز المبلغ حتى الاستلام.
     </p>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-    <!-- Drag & Drop visual preview -->
     <div class="lg:col-span-7">
-    <div class="relative bg-slate-50/70 rounded-3xl overflow-hidden border border-slate-200/90 shadow-xl shadow-slate-200/50 card-glow group cursor-pointer aspect-video sm:aspect-[16/10] flex flex-col justify-between p-4 sm:p-6 select-none"><div class="absolute inset-0 bg-gradient-to-br from-white via-slate-50/80 to-teal-50/50 z-0"></div><div class="absolute inset-0 opacity-25 pointer-events-none flex items-center justify-center p-6 z-0"><div class="w-full h-full border border-teal-200/70 rounded-2xl p-4 flex flex-col justify-between bg-white/85 backdrop-blur-xs shadow-sm"><div class="flex items-center justify-between border-b border-slate-200/80 pb-3"><div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-emerald-500/80"></span><span class="w-3 h-3 rounded-full bg-amber-500/80"></span><span class="w-3 h-3 rounded-full bg-slate-400"></span><span class="text-[11px] text-[#006b5e] font-mono ms-2 font-bold">pulse_data_loader.xlsx</span></div><span class="text-[10px] text-teal-700 bg-teal-50 border border-teal-200/80 px-2 py-0.5 rounded-full font-bold">100% Validated</span></div><div class="space-y-2 py-4"><div class="h-2.5 bg-slate-200 rounded-full w-3/4"></div><div class="h-2.5 bg-[#04bca6]/30 rounded-full w-5/6"></div><div class="h-2.5 bg-slate-200 rounded-full w-2/3"></div></div><div class="flex items-center justify-between text-[11px] text-slate-500 font-medium"><span class="">12,000 SKUs Auto-Mapped</span><span class="">0 Errors Detected</span></div></div></div><div class="relative z-10 flex items-center justify-between gap-2"><div class="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md border border-slate-200/90 px-3 py-1.5 rounded-full text-xs text-slate-800 shadow-xs"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span><span class="font-bold" data-i18n="video_badge">فيديو توضيحي: نقل البيانات في 5 دقائق</span></div><div class="inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] font-mono text-[#006b5e] font-bold border border-teal-200/80 shadow-xs"><span class="material-symbols-outlined text-[14px] text-[#04bca6]">schedule</span><span class="" data-i18n="video_duration">01:45 د</span></div></div><div class="relative z-10 my-auto flex flex-col items-center justify-center text-center py-4"><div class="relative flex items-center justify-center"><div class="absolute -inset-3 bg-[#04bca6]/30 rounded-full blur-lg group-hover:bg-[#04bca6]/50 transition-all duration-300 animate-pulse"></div><button aria-label="Play Demo Video" class="relative w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-[#04bca6] group-hover:bg-[#008e7d] text-white flex items-center justify-center shadow-xl shadow-teal-500/30 transition-transform duration-300 group-hover:scale-110 cursor-pointer"><span class="material-symbols-outlined text-3xl sm:text-4xl translate-x-0.5 rtl:-translate-x-0.5">play_arrow</span></button></div><p class="text-slate-900 font-bold text-sm sm:text-base mt-4 drop-shadow-xs" data-i18n="video_caption">شاهد كيف يتم سحب وإفلات 12,000 صنف ومطابقتها فوراً</p><span class="text-[11px] text-[#006b5e] mt-1 font-semibold" data-i18n="video_subcaption">انقر للمشاهدة مع الصوت والشرح التفاعلي</span></div><div class="relative z-10 bg-white/95 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 border border-slate-200/90 shadow-md shadow-slate-200/50 space-y-2"><div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden flex cursor-pointer"><div class="bg-[#04bca6] h-full w-[42%] rounded-full relative"><div class="absolute right-0 rtl:left-0 top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-white rounded-full shadow-xs border border-teal-600"></div></div></div><div class="flex items-center justify-between text-xs text-slate-600"><div class="flex items-center gap-3"><button class="hover:text-[#006b5e] transition-colors flex items-center text-slate-700"><span class="material-symbols-outlined text-[20px]">play_arrow</span></button><button class="hover:text-[#006b5e] transition-colors flex items-center text-slate-700"><span class="material-symbols-outlined text-[18px]">volume_up</span></button><span class="text-[11px] font-mono text-slate-500"><span class="text-slate-900 font-bold">00:44</span> / 01:45</span></div><div class="flex items-center gap-2.5"><span class="text-[10px] bg-teal-50 border border-teal-200 text-[#006b5e] px-2 py-0.5 rounded-md font-bold font-mono">1080p HD</span><button class="hover:text-[#006b5e] transition-colors flex items-center text-slate-700"><span class="material-symbols-outlined text-[18px]">fullscreen</span></button></div></div></div></div>
+    <div class="bg-white rounded-3xl border border-slate-200/90 shadow-xl shadow-slate-200/50 p-4 sm:p-6 space-y-4">
+    <div class="flex items-center justify-between">
+    <div class="inline-flex items-center gap-2 text-xs font-bold text-[#006b5e]">
+    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+    <span data-i18n="how_scene_badge">مسار تبادل حي</span>
     </div>
-    <!-- Migration Steps -->
+    <span class="text-[11px] font-mono font-bold text-slate-500" data-i18n="how_scene_id">P2P-1842</span>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 items-stretch">
+    <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3.5 content-align">
+    <p class="text-[10px] font-bold text-slate-400" data-i18n="how_scene_from_lbl">1. أدرج</p>
+    <p class="text-sm font-black text-slate-900 mt-1" data-i18n="how_scene_sku">أوجمنتين 1 جم</p>
+    <p class="text-[11px] text-slate-500 mt-1" data-i18n="how_scene_qty">15 عبوة • راكد</p>
+    </div>
+    <div class="rounded-2xl border border-teal-200 bg-teal-50/70 p-3.5 content-align">
+    <p class="text-[10px] font-bold text-teal-700" data-i18n="how_scene_match_lbl">2. طابِق</p>
+    <p class="text-sm font-black text-slate-900 mt-1" data-i18n="how_scene_to">صيدلية الشفاء 2</p>
+    <p class="text-[11px] text-[#006b5e] mt-1" data-i18n="how_scene_need">تحتاج الكمية اليوم</p>
+    </div>
+    <div class="rounded-2xl border border-emerald-200 bg-emerald-50/70 p-3.5 content-align">
+    <p class="text-[10px] font-bold text-emerald-700" data-i18n="how_scene_pay_lbl">3. اقبض</p>
+    <p class="text-sm font-black text-slate-900 mt-1 font-mono" data-i18n="how_scene_pay">+420$</p>
+    <p class="text-[11px] text-emerald-800 mt-1" data-i18n="how_scene_escrow">محجوز في المحفظة</p>
+    </div>
+    </div>
+    <div class="rounded-2xl bg-slate-50 border border-slate-100 p-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs">
+    <span class="font-semibold text-slate-700 flex items-center gap-1.5">
+    <span class="material-symbols-outlined text-[16px] text-[#04bca6]">ac_unit</span>
+    <span data-i18n="how_scene_ship">شحن مبرّد • تأكيد الاستلام يفك الضمان</span>
+    </span>
+    <span class="font-bold text-[#006b5e]" data-i18n="how_scene_eta">وصول متوقع: 3 ساعات</span>
+    </div>
+    </div>
+    </div>
     <div class="lg:col-span-5 space-y-3.5 content-align">
     <div class="p-4 rounded-2xl bg-white border border-slate-100 shadow-xs hover:border-teal-200/80 transition-all flex items-start gap-3.5">
-    <div class="w-8 h-8 rounded-full bg-teal-50 text-[#006b5e] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
-    1
-    </div>
+    <div class="w-8 h-8 rounded-full bg-teal-50 text-[#006b5e] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</div>
     <div>
-    <h4 class="text-sm font-bold text-slate-900" data-i18n="mig_step1_title">سحب وإفلات الملف</h4>
-    <p class="text-xs text-slate-500 mt-0.5 leading-relaxed" data-i18n="mig_step1_desc">ارفع ملف بيانات صيدليتك الحالية بصيغته الأصلية بدون أي تعديل يدوي معقد.</p>
+    <h4 class="text-sm font-bold text-slate-900" data-i18n="how_step1_title">أدرج الصنف الراكد من مخزونك</h4>
+    <p class="text-xs text-slate-500 mt-0.5 leading-relaxed" data-i18n="how_step1_desc">اختر العبوات البطيئة أو قريبة الانتهاء. Pulse يعرضها على شبكة الصيدليات الموثّقة فقط.</p>
     </div>
     </div>
     <div class="p-4 rounded-2xl bg-white border border-slate-100 shadow-xs hover:border-teal-200/80 transition-all flex items-start gap-3.5">
-    <div class="w-8 h-8 rounded-full bg-teal-50 text-[#006b5e] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
-    2
-    </div>
+    <div class="w-8 h-8 rounded-full bg-teal-50 text-[#006b5e] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</div>
     <div>
-    <h4 class="text-sm font-bold text-slate-900" data-i18n="mig_step2_title">مطابقة آلية للباركود والأسعار</h4>
-    <p class="text-xs text-slate-500 mt-0.5 leading-relaxed" data-i18n="mig_step2_desc">يتعرّف Pulse تلقائيًا على الأسماء العلمية والتجارية وأسعار الجملة، بدقة ومن دون إدخال يدوي.<br></p>
+    <h4 class="text-sm font-bold text-slate-900" data-i18n="how_step2_title">مطابقة تلقائية مع صيدلية تحتاجه</h4>
+    <p class="text-xs text-slate-500 mt-0.5 leading-relaxed" data-i18n="how_step2_desc">النظام يربط النقص القريب بالفائض عندك: نفس الصنف، نفس المدينة، بدون وسيط غير موثّق.</p>
     </div>
     </div>
     <div class="p-4 rounded-2xl bg-white border border-slate-100 shadow-xs hover:border-teal-200/80 transition-all flex items-start gap-3.5">
-    <div class="w-8 h-8 rounded-full bg-teal-50 text-[#006b5e] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
-    3
-    </div>
+    <div class="w-8 h-8 rounded-full bg-teal-50 text-[#006b5e] font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</div>
     <div>
-    <h4 class="text-sm font-bold text-slate-900" data-i18n="mig_step3_title">بدء البيع الفوري فوراً</h4>
-    <p class="text-xs text-slate-500 mt-0.5 leading-relaxed" data-i18n="mig_step3_desc">صيدليتك جاهزة فوراً لإصدار الفواتير وقراءة الباركود دون أي توقف لخدمة المرضى.</p>
+    <h4 class="text-sm font-bold text-slate-900" data-i18n="how_step3_title">تسوية محفظة وشحن مبرّد</h4>
+    <p class="text-xs text-slate-500 mt-0.5 leading-relaxed" data-i18n="how_step3_desc">المبلغ يُحجز حتى تأكيد الاستلام. الشحن الطبي المبرّد يحمي السلسلة، والكاش يعود لرأس مالك.</p>
     </div>
     </div>
-    <div class="pt-2 flex flex-col sm:flex-row items-center gap-3">
-    <a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#04bca6] hover:bg-[#008e7d] text-white text-xs font-bold px-5 py-2.5 rounded-full shadow-xs transition-colors" href="#book-demo">
-    <span class="material-symbols-outlined text-[16px]">sync</span>
-    <span class="" data-i18n="mig_cta_btn">طلب نقل بيانات مجاني</span>
+    <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+    <a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#04bca6] hover:bg-[#008e7d] text-white text-sm font-bold min-h-12 px-5 py-3 rounded-full shadow-xs transition-colors" href="#overview" onclick="focusHeroPhone()">
+    <span class="material-symbols-outlined text-[16px]">swap_horiz</span>
+    <span data-i18n="how_cta_btn">ابدأ أول تبادل</span>
     </a>
-    <a class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 text-xs font-bold text-slate-700 hover:text-[#04bca6] px-4 py-2.5 rounded-full border border-slate-200 hover:border-teal-200 transition-colors" href="https://wa.me/" target="_blank">
-    <span class="material-symbols-outlined text-emerald-600 text-[16px]">chat</span>
-    <span class="" data-i18n="mig_cta_expert">تحدث مع خبير التهيئة</span>
+    <a class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 text-sm font-bold text-slate-700 hover:text-[#04bca6] min-h-12 px-4 py-3 rounded-full border border-slate-200 hover:border-teal-200 transition-colors" href="#book-demo">
+    <span class="material-symbols-outlined text-[#04bca6] text-[16px]">calendar_today</span>
+    <span data-i18n="how_cta_demo">شاهد مطابقة على مخزونك</span>
     </a>
     </div>
     </div>
     </div>
     </div>
     </section>
-    <!-- 5. FOUR PILLARS BENTO -->
-    <section class="py-20 sm:py-24 bg-[#f8fafc] border-b border-slate-100" id="bento">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+    <!-- 5. SUPPORTING PULSE OS -->
+    <section class="py-12 sm:py-20 lg:py-24 bg-white border-b border-slate-100" id="bento">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12 space-y-3">
     <div class="inline-flex items-center gap-2 bg-teal-50 border border-teal-200/80 px-4 py-1.5 rounded-full text-xs font-bold text-[#006b5e] shadow-xs">
     <span class="w-2 h-2 rounded-full bg-[#04bca6] animate-pulse"></span>
-    <span data-i18n="bento_badge">المميزات الأساسية</span>
+    <span data-i18n="bento_badge">لماذا P2P يعمل داخل Pulse</span>
     </div>
-    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight" data-i18n="bento_title">أربع ركائز صُممت خصيصاً لراحة الصيدلي</h2>
-    <p class="text-slate-600 text-sm sm:text-base font-normal leading-relaxed" data-i18n="bento_subtitle">حلول تكنولوجية حديثة تقضي على التوقفات، وتقلص الهدر، وتزيد الربحية.</p>
+    <h2 class="text-xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight" data-i18n="bento_title">التبادل يحتاج كاشير ومخزون ومحفظة في نفس النظام</h2>
+    <p class="text-slate-600 text-sm sm:text-base font-normal leading-relaxed" data-i18n="bento_subtitle">P2P ليس سوقاً منفصلاً. هو طبقة فوق مخزونك الحي، حتى لا تبيع صنفاً غير موجود أو منتهي الصلاحية.</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
     <!-- Pillar 1: POS -->
@@ -326,18 +413,18 @@
     </div>
     <h3 class="text-lg font-black text-slate-900 leading-snug" data-i18n="card1_title">كاشير سريع يعمل دون أي انقطاع</h3>
     <p class="text-sm text-slate-600 mt-2 leading-relaxed" data-i18n="card1_desc">مهما حدث انقطاع في شبكة الإنترنت، يستمر الكاشير في قراءة الباركود وإصدار الفواتير المعتمدة بدون أي بطء، مع مزامنة تلقائية وفورية فور عودة الاتصال.</p>
-    <div class="grid grid-cols-3 gap-2 mt-4">
-    <div class="rounded-2xl bg-teal-50/70 border border-teal-100 p-2.5 text-center">
-    <div class="text-sm font-black text-[#006b5e] font-mono" data-i18n="card1_stat1_val">ثانية واحدة</div>
-    <div class="text-[10px] text-slate-500 mt-0.5" data-i18n="card1_stat1_lbl">استجابة الباركود</div>
+    <div class="grid grid-cols-3 gap-1.5 sm:gap-2 mt-4">
+    <div class="rounded-2xl bg-teal-50/70 border border-teal-100 p-2 sm:p-2.5 text-center min-w-0">
+    <div class="text-[11px] sm:text-sm font-black text-[#006b5e] font-mono leading-tight" data-i18n="card1_stat1_val">ثانية واحدة</div>
+    <div class="text-[10px] text-slate-500 mt-0.5 leading-tight" data-i18n="card1_stat1_lbl">استجابة الباركود</div>
     </div>
-    <div class="rounded-2xl bg-teal-50/70 border border-teal-100 p-2.5 text-center">
-    <div class="text-sm font-black text-[#006b5e] font-mono">100%</div>
-    <div class="text-[10px] text-slate-500 mt-0.5" data-i18n="card1_stat2_lbl">استمرارية البيع</div>
+    <div class="rounded-2xl bg-teal-50/70 border border-teal-100 p-2 sm:p-2.5 text-center min-w-0">
+    <div class="text-[11px] sm:text-sm font-black text-[#006b5e] font-mono leading-tight">100%</div>
+    <div class="text-[10px] text-slate-500 mt-0.5 leading-tight" data-i18n="card1_stat2_lbl">استمرارية البيع</div>
     </div>
-    <div class="rounded-2xl bg-teal-50/70 border border-teal-100 p-2.5 text-center">
-    <div class="text-sm font-black text-[#006b5e] font-mono" data-i18n="card1_stat3_val">0 ثانية</div>
-    <div class="text-[10px] text-slate-500 mt-0.5" data-i18n="card1_stat3_lbl">توقف عند العطل</div>
+    <div class="rounded-2xl bg-teal-50/70 border border-teal-100 p-2 sm:p-2.5 text-center min-w-0">
+    <div class="text-[11px] sm:text-sm font-black text-[#006b5e] font-mono leading-tight" data-i18n="card1_stat3_val">0 ثانية</div>
+    <div class="text-[10px] text-slate-500 mt-0.5 leading-tight" data-i18n="card1_stat3_lbl">توقف عند العطل</div>
     </div>
     </div>
     <div class="mt-auto pt-4 rounded-2xl bg-slate-50 border border-slate-100 p-3 space-y-2">
@@ -433,7 +520,7 @@
     </div>
     </article>
     <!-- Pillar 4: P2P -->
-    <article class="bg-white rounded-3xl border border-slate-200/90 p-5 sm:p-6 card-glow flex flex-col content-align">
+    <article class="bg-white rounded-3xl border-2 border-[#04bca6]/40 p-5 sm:p-6 card-glow flex flex-col content-align shadow-md shadow-teal-100/60">
     <div class="flex items-center justify-between mb-4">
     <span class="text-[11px] font-bold text-[#006b5e] bg-teal-50 border border-teal-100 px-2.5 py-1 rounded-full">04</span>
     <div class="w-11 h-11 rounded-2xl bg-teal-50 border border-teal-100 text-[#006b5e] flex items-center justify-center">
@@ -442,16 +529,16 @@
     </div>
     <h3 class="text-lg font-black text-slate-900 leading-snug" data-i18n="card4_title">شبكة التبادل المباشر بين الصيدليات (P2P)</h3>
     <p class="text-sm text-slate-600 mt-2 leading-relaxed" data-i18n="card4_desc">حوّل الأصناف البطيئة الحركة لديك إلى سيولة نقدية مباشرة عبر بيعها أو مبادلتها مع صيدليات شريكة مجاورة تبحث عنها لمرضاها.</p>
-    <div class="grid grid-cols-3 gap-2 mt-4">
-    <div class="rounded-2xl bg-teal-50/70 border border-teal-100 p-2.5 text-center">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-4">
+    <div class="rounded-2xl bg-teal-50/70 border border-teal-100 p-2.5 text-start sm:text-center">
     <div class="text-[11px] font-black text-[#006b5e]" data-i18n="card4_f1_title">تسوية مالية مؤمنة</div>
     <div class="text-[10px] text-slate-500 mt-0.5" data-i18n="card4_f1_desc">عبر المحفظة الرقمية</div>
     </div>
-    <div class="rounded-2xl bg-teal-50/70 border border-teal-100 p-2.5 text-center">
+    <div class="rounded-2xl bg-teal-50/70 border border-teal-100 p-2.5 text-start sm:text-center">
     <div class="text-[11px] font-black text-[#006b5e]" data-i18n="card4_f2_title">شحن طبي مبرّد</div>
     <div class="text-[10px] text-slate-500 mt-0.5" data-i18n="card4_f2_desc">مطابق للمعايير الصحية</div>
     </div>
-    <div class="rounded-2xl bg-teal-50/70 border border-teal-100 p-2.5 text-center">
+    <div class="rounded-2xl bg-teal-50/70 border border-teal-100 p-2.5 text-start sm:text-center">
     <div class="text-[11px] font-black text-[#006b5e]" data-i18n="card4_f3_title">حماية رأس المال</div>
     <div class="text-[10px] text-slate-500 mt-0.5" data-i18n="card4_f3_desc">تقليل الخسائر الدوائية</div>
     </div>
@@ -465,8 +552,8 @@
     </div>
     </article>
     </div>
-    <div class="mt-8 flex justify-center">
-    <a class="inline-flex items-center gap-2 bg-[#04bca6] hover:bg-[#008e7d] text-white font-bold text-sm px-6 py-3 rounded-full shadow-md shadow-teal-500/20 transition-all" href="#book-demo">
+    <div class="mt-8 flex justify-center px-1">
+    <a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#04bca6] hover:bg-[#008e7d] text-white font-bold text-sm min-h-12 px-6 py-3 rounded-full shadow-md shadow-teal-500/20 transition-all" href="#book-demo">
     <span data-i18n="hero_cta_trial">ابدأ تجربتك المجانية</span>
     <span class="material-symbols-outlined text-[18px] rtl:rotate-180">arrow_forward</span>
     </a>
@@ -474,19 +561,19 @@
     </div>
     </section>
     <!-- 6. CASHBACK & PULSE WALLET SECTION -->
-    <section class="py-20 sm:py-24 bg-white border-b border-slate-100" id="wallet-cashback">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="py-12 sm:py-20 lg:py-24 bg-white border-b border-slate-100" id="wallet-cashback">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
     <div class="lg:col-span-6 space-y-5 content-align">
     <div class="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 px-3.5 py-1 rounded-full text-xs font-bold text-emerald-800">
     <span class="material-symbols-outlined text-[16px]">account_balance_wallet</span>
     <span class="" data-i18n="wallet_badge">محفظة الصيدلية الذكية</span>
     </div>
-    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 leading-tight" data-i18n="wallet_title">
+    <h2 class="text-xl sm:text-3xl lg:text-4xl font-black text-slate-900 leading-tight" data-i18n="wallet_title">
     استرداد نقدي حقيقي (Cashback)<br>يغطي تكلفة اشتراك صيدليتك
     </h2>
     <p class="text-slate-600 text-sm sm:text-base leading-relaxed" data-i18n="wallet_subtitle">
-    مع كل طلبية أدوية عبر موزعي Pulse، يتراكم كاش باك حقيقي في محفظتك ليُخصم من اشتراكك السنوي أو يُحوّل لحسابك.
+    محفظة واحدة لتسويات P2P والكاش باك من الموزعين. المبلغ يُحجز عند التبادل حتى الاستلام، ثم يصبح رصيداً حقيقياً يُخصم من اشتراكك أو يُحوّل لحسابك.
     </p>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs font-bold text-slate-700">
     <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 flex items-center gap-2.5">
@@ -501,7 +588,7 @@
     </div>
     <!-- Clean Wallet Card -->
     <div class="lg:col-span-6">
-    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-lg shadow-slate-100 card-glow content-align space-y-5">
+    <div class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 border border-slate-200/90 shadow-lg shadow-slate-100 card-glow content-align space-y-5">
     <div class="flex items-center justify-between pb-4 border-b border-slate-100">
     <div>
     <span class="text-xs text-slate-500 font-medium" data-i18n="wallet_bal_label">الرصيد المتاح في المحفظة</span>
@@ -513,29 +600,29 @@
     </div>
     <!-- Recent automated cashback transactions -->
     <div class="space-y-2 text-xs">
-    <div class="flex items-center justify-between bg-slate-50 p-3 rounded-2xl border border-slate-100">
-    <div class="flex items-center gap-2">
-    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-    <span class="text-slate-800 font-medium" data-i18n="wallet_tx1">كاش باك: طلبية أدوية مستودع معتمد</span>
+    <div class="flex items-start sm:items-center justify-between gap-2 bg-slate-50 p-3 rounded-2xl border border-slate-100">
+    <div class="flex items-start sm:items-center gap-2 min-w-0">
+    <span class="w-2 h-2 rounded-full bg-emerald-500 mt-1.5 sm:mt-0 shrink-0"></span>
+    <span class="text-slate-800 font-medium leading-snug" data-i18n="wallet_tx1">كاش باك: طلبية أدوية مستودع معتمد</span>
     </div>
-    <span class="font-mono font-bold text-emerald-600" data-i18n="wallet_tx1_val">+640$</span>
+    <span class="font-mono font-bold text-emerald-600 shrink-0" data-i18n="wallet_tx1_val">+640$</span>
     </div>
-    <div class="flex items-center justify-between bg-slate-50 p-3 rounded-2xl border border-slate-100">
-    <div class="flex items-center gap-2">
-    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-    <span class="text-slate-800 font-medium" data-i18n="wallet_tx2">مكافأة الانضمام لشريحة الشركاء</span>
+    <div class="flex items-start sm:items-center justify-between gap-2 bg-slate-50 p-3 rounded-2xl border border-slate-100">
+    <div class="flex items-start sm:items-center gap-2 min-w-0">
+    <span class="w-2 h-2 rounded-full bg-emerald-500 mt-1.5 sm:mt-0 shrink-0"></span>
+    <span class="text-slate-800 font-medium leading-snug" data-i18n="wallet_tx2">مكافأة الانضمام لشريحة الشركاء</span>
     </div>
-    <span class="font-mono font-bold text-emerald-600" data-i18n="wallet_tx2_val">+2,000$</span>
+    <span class="font-mono font-bold text-emerald-600 shrink-0" data-i18n="wallet_tx2_val">+2,000$</span>
     </div>
-    <div class="flex items-center justify-between bg-slate-50 p-3 rounded-2xl border border-slate-100">
-    <div class="flex items-center gap-2">
-    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-    <span class="text-slate-800 font-medium" data-i18n="wallet_tx3">كاش باك: عروض حليب الأطفال والأغذية</span>
+    <div class="flex items-start sm:items-center justify-between gap-2 bg-slate-50 p-3 rounded-2xl border border-slate-100">
+    <div class="flex items-start sm:items-center gap-2 min-w-0">
+    <span class="w-2 h-2 rounded-full bg-emerald-500 mt-1.5 sm:mt-0 shrink-0"></span>
+    <span class="text-slate-800 font-medium leading-snug" data-i18n="wallet_tx3">كاش باك: عروض حليب الأطفال والأغذية</span>
     </div>
-    <span class="font-mono font-bold text-emerald-600" data-i18n="wallet_tx3_val">+1,220$</span>
+    <span class="font-mono font-bold text-emerald-600 shrink-0" data-i18n="wallet_tx3_val">+1,220$</span>
     </div>
     </div>
-    <div class="pt-2 flex items-center justify-between text-xs text-slate-500">
+    <div class="pt-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 text-xs text-slate-500">
     <span class="text-teal-700 font-semibold flex items-center gap-1">
     <span class="material-symbols-outlined text-[16px]">check_circle</span>
     <span class="" data-i18n="wallet_sub_note">متاح للخصم التلقائي عند تجديد باقتك</span>
@@ -548,67 +635,67 @@
     </div>
     </section>
     <!-- 9. FAQ ACCORDION -->
-    <section class="py-20 sm:py-24 bg-[#f8fafc] border-b border-slate-100" id="faq">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
+    <section class="py-12 sm:py-20 lg:py-24 bg-[#f8fafc] border-b border-slate-100" id="faq">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12 space-y-2">
     <span class="text-xs font-bold text-[#006b5e] bg-teal-50 px-3 py-1 rounded-full border border-teal-200" data-i18n="faq_badge">
     الأسئلة الشائعة
     </span>
-    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight" data-i18n="faq_title">
+    <h2 class="text-xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight" data-i18n="faq_title">
     إجابات واضحة ومباشرة
     </h2>
     <p class="text-slate-600 text-sm" data-i18n="faq_subtitle">
-    كل ما تحتاج معرفته عن نقل البيانات، والتشغيل اليومي، والدعم.
+    كيف يعمل التبادل بين الصيدليات، وكيف تصل الفلوس، وماذا عن التبريد والبيانات.
     </p>
     </div>
     <div class="space-y-3 content-align">
     <!-- Question 1 -->
-    <details class="group w-full bg-white rounded-2xl px-5 py-4 sm:px-7 sm:py-5 border border-slate-100 shadow-xs transition-all">
-    <summary class="flex items-start justify-between gap-4 cursor-pointer font-bold text-sm sm:text-base text-slate-900 list-none">
-    <span class="flex-1 min-w-0 leading-relaxed" data-i18n="faq_q1">كيف يتم نقل بيانات صيدليتي ومخزوني القديم إلى Pulse؟</span>
+    <details class="group w-full bg-white rounded-2xl px-4 py-3.5 sm:px-7 sm:py-5 border border-slate-100 shadow-xs transition-all">
+    <summary class="flex items-start justify-between gap-3 cursor-pointer font-bold text-sm sm:text-base text-slate-900 list-none min-h-11">
+    <span class="flex-1 min-w-0 leading-relaxed" data-i18n="faq_q1">هل التبادل بين الصيدليات (P2P) نظامي وآمن؟</span>
     <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition-transform shrink-0 mt-0.5">expand_more</span>
     </summary>
     <p class="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed font-normal max-w-4xl" data-i18n="faq_a1">
-    ارفع ملف Excel من برنامجك الحالي، ويتم نقل الأصناف والأسعار خلال 5 دقائق. ويمكن لفريق الدعم إتمام النقل مجاناً دون توقف البيع.
+    التبادل يتم فقط بين صيدليات موثّقة داخل Pulse. كل صفقة مربوطة بصنف وصلاحية وكميات من المخزون الحي، مع تسوية محفظة حتى تأكيد الاستلام.
     </p>
     </details>
     <!-- Question 2 -->
-    <details class="group w-full bg-white rounded-2xl px-5 py-4 sm:px-7 sm:py-5 border border-slate-100 shadow-xs transition-all">
-    <summary class="flex items-start justify-between gap-4 cursor-pointer font-bold text-sm sm:text-base text-slate-900 list-none">
-    <span class="flex-1 min-w-0 leading-relaxed" data-i18n="faq_q2">ماذا يحدث عند انقطاع الاتصال بالإنترنت أثناء ساعات الذروة؟</span>
+    <details class="group w-full bg-white rounded-2xl px-4 py-3.5 sm:px-7 sm:py-5 border border-slate-100 shadow-xs transition-all">
+    <summary class="flex items-start justify-between gap-3 cursor-pointer font-bold text-sm sm:text-base text-slate-900 list-none min-h-11">
+    <span class="flex-1 min-w-0 leading-relaxed" data-i18n="faq_q2">كيف تصلني فلوس التبادل؟ هل هي كاش حقيقي؟</span>
     <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition-transform shrink-0 mt-0.5">expand_more</span>
     </summary>
     <p class="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed font-normal max-w-4xl" data-i18n="faq_a2">
-    الكاشير يستمر في البيع وقراءة الباركود حتى مع انقطاع الإنترنت، وبمجرد عودة الاتصال تتم مزامنة كل الفواتير تلقائياً.
+    نعم. المبلغ يُحجز في المحفظة عند التطابق، ويُحرَّر بعد تأكيد الاستلام. يمكنك استخدامه لتغطية الاشتراك أو تحويله وفق سياسة المحفظة.
     </p>
     </details>
     <!-- Question 3 -->
-    <details class="group w-full bg-white rounded-2xl px-5 py-4 sm:px-7 sm:py-5 border border-slate-100 shadow-xs transition-all">
-    <summary class="flex items-start justify-between gap-4 cursor-pointer font-bold text-sm sm:text-base text-slate-900 list-none">
-    <span class="flex-1 min-w-0 leading-relaxed" data-i18n="faq_q3">كيف يتم احتساب الاسترداد النقدي (Cashback) وهل هو حقيقي؟</span>
+    <details class="group w-full bg-white rounded-2xl px-4 py-3.5 sm:px-7 sm:py-5 border border-slate-100 shadow-xs transition-all">
+    <summary class="flex items-start justify-between gap-3 cursor-pointer font-bold text-sm sm:text-base text-slate-900 list-none min-h-11">
+    <span class="flex-1 min-w-0 leading-relaxed" data-i18n="faq_q3">ماذا عن الأدوية التي تحتاج تبريداً؟</span>
     <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition-transform shrink-0 mt-0.5">expand_more</span>
     </summary>
     <p class="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed font-normal max-w-4xl" data-i18n="faq_a3">
-    نعم، كاش باك حقيقي يُحتسب من طلبياتك عبر موزعي Pulse، ويتراكم في محفظتك ليُخصم من اشتراكك السنوي أو يُحوّل لحسابك.
+    الشحن الطبي المبرّد جزء من مسار P2P للأصناف الحساسة. لا يتم فك الضمان إلا بعد تأكيد الاستلام وسلامة السلسلة.
     </p>
     </details>
     <!-- Question 4 -->
-    <details class="group w-full bg-white rounded-2xl px-5 py-4 sm:px-7 sm:py-5 border border-slate-100 shadow-xs transition-all">
-    <summary class="flex items-start justify-between gap-4 cursor-pointer font-bold text-sm sm:text-base text-slate-900 list-none">
-    <span class="flex-1 min-w-0 leading-relaxed" data-i18n="faq_q4">هل أستطيع متابعة مبيعات الفروع والأرباح من هاتفي المحمول؟</span>
+    <details class="group w-full bg-white rounded-2xl px-4 py-3.5 sm:px-7 sm:py-5 border border-slate-100 shadow-xs transition-all">
+    <summary class="flex items-start justify-between gap-3 cursor-pointer font-bold text-sm sm:text-base text-slate-900 list-none min-h-11">
+    <span class="flex-1 min-w-0 leading-relaxed" data-i18n="faq_q4">هل أحتاج نقل بياناتي أولاً حتى أبيع راكداً؟</span>
     <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition-transform shrink-0 mt-0.5">expand_more</span>
     </summary>
     <p class="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed font-normal max-w-4xl" data-i18n="faq_a4">
-    نعم، تتابع مبيعات الفروع والأرباح وتنبيهات المخزون من هاتفك مباشرة.
+    نعم، حتى لا تُعرض كمية غير موجودة. ننقل الأصناف والأسعار من ملفك الحالي خلال دقائق، والكاشير يعمل حتى أثناء النقل.
     </p>
     </details>
     </div>
     </div>
     </section>
     <!-- 10. LEAD CAPTURE & DEMO SECTION -->
-    <section class="py-20 sm:py-24 bg-white" id="book-demo">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="bg-gradient-to-br from-slate-900 to-teal-950 rounded-3xl p-6 sm:p-12 text-white shadow-xl relative overflow-hidden content-align">
+    <section class="py-12 sm:py-20 lg:py-24 bg-white" id="book-demo">
+    <div class="max-w-5xl mx-auto px-3 sm:px-6 lg:px-8">
+    <div class="bg-gradient-to-br from-slate-900 to-teal-950 rounded-2xl sm:rounded-3xl p-5 sm:p-12 text-white shadow-xl relative overflow-hidden content-align max-w-full">
     <!-- Soft decorative glow -->
     <div class="absolute -left-20 -top-20 w-72 h-72 bg-[#04bca6]/15 rounded-full blur-3xl pointer-events-none"></div>
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative">
@@ -618,42 +705,42 @@
     <span class="material-symbols-outlined text-[16px]">verified</span>
     <span class="" data-i18n="demo_badge">تجربة مجانية بالكامل</span>
     </div>
-    <h2 class="text-2xl sm:text-3xl font-black text-white leading-tight" data-i18n="demo_title">
-    احجز موعدًا للتجربة وابدأ مجاناً
+    <h2 class="text-xl sm:text-3xl font-black text-white leading-tight" data-i18n="demo_title">
+    شاهد مطابقة P2P على مخزونك الحقيقي
     </h2>
     <p class="text-slate-300 text-xs sm:text-sm leading-relaxed" data-i18n="demo_desc">
-    15 دقيقة نوضح لك كيف يسرّع Pulse مبيعاتك. بدون التزام وبدون بطاقة بنكية.
+    15 دقيقة. نأخذ صنفاً راكداً من صيدليتك ونريك من يحتاجه الآن — بدون التزام وبدون بطاقة.
     </p>
     <div class="pt-2 flex items-center gap-2">
-    <a class="inline-flex items-center gap-2 bg-[#04bca6] hover:bg-[#008e7d] text-white font-bold px-4 py-2 rounded-full text-xs transition-colors shadow-xs" href="https://wa.me/" target="_blank">
+    <a class="inline-flex items-center justify-center gap-2 w-full sm:w-auto min-h-12 bg-[#04bca6] hover:bg-[#008e7d] text-white font-bold px-4 py-3 rounded-full text-sm transition-colors shadow-xs" href="https://wa.me/" target="_blank">
     <span class="material-symbols-outlined text-[16px]">chat</span>
     <span class="" data-i18n="demo_wa_btn">تواصل فوراً عبر واتساب</span>
     </a>
     </div>
     </div>
     <!-- Clean Form -->
-    <div class="lg:col-span-7 bg-white text-slate-900 rounded-2xl p-5 sm:p-7 shadow-lg">
+    <div class="lg:col-span-7 bg-white text-slate-900 rounded-2xl p-4 sm:p-7 shadow-lg">
     <h3 class="text-base font-bold text-slate-900 mb-1" data-i18n="form_title">بيانات التواصل لتأكيد الموعد</h3>
     <p class="text-[11px] text-slate-500 mb-4" data-i18n="form_subtitle">سيتواصل معك خبير أنظمة صيدلية لتفعيل حسابك وتحديد الموعد المناسب.</p>
     <form class="space-y-3" id="demo-form" onsubmit="event.preventDefault(); alert(currentLang === 'ar' ? 'تم استلام طلبكم بنجاح! سيتواصل معكم مستشار Pulse لتأكيد موعد التجربة.' : (currentLang === 'fr' ? 'Votre demande a été reçue ! Un conseiller Pulse vous contactera bientôt.' : 'Your request has been received! A Pulse specialist will contact you shortly.'));">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
     <div>
     <label class="block text-[11px] font-bold text-slate-700 mb-1" data-i18n="form_pharmacy_name">اسم الصيدلية</label>
-    <input class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs focus:outline-none focus:border-[#04bca6] focus:ring-1 focus:ring-[#04bca6]" id="input-pharmacy" placeholder="مثال: صيدلية الأمل" required="" type="text">
+    <input class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-3 min-h-12 text-base focus:outline-none focus:border-[#04bca6] focus:ring-1 focus:ring-[#04bca6]" id="input-pharmacy" placeholder="مثال: صيدلية الأمل" required="" type="text">
     </div>
     <div>
     <label class="block text-[11px] font-bold text-slate-700 mb-1" data-i18n="form_contact_name">اسم الصيدلي / المسؤول</label>
-    <input class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs focus:outline-none focus:border-[#04bca6] focus:ring-1 focus:ring-[#04bca6]" id="input-name" placeholder="د. الاسم الكريم" required="" type="text">
+    <input class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-3 min-h-12 text-base focus:outline-none focus:border-[#04bca6] focus:ring-1 focus:ring-[#04bca6]" id="input-name" placeholder="د. الاسم الكريم" required="" type="text">
     </div>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
     <div>
     <label class="block text-[11px] font-bold text-slate-700 mb-1" data-i18n="form_phone">رقم الهاتف أو الواتساب</label>
-    <input class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs focus:outline-none focus:border-[#04bca6] focus:ring-1 focus:ring-[#04bca6]" dir="ltr" id="input-phone" maxlength="20" name="phone" placeholder="+966 5X XXX XXXX" required="" type="tel">
+    <input class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-3 min-h-12 text-base focus:outline-none focus:border-[#04bca6] focus:ring-1 focus:ring-[#04bca6]" dir="ltr" id="input-phone" maxlength="20" name="phone" placeholder="+966 5X XXX XXXX" required="" type="tel">
     </div>
     <div>
     <label class="block text-[11px] font-bold text-slate-700 mb-1" data-i18n="form_country_city">الدولة والمدينة</label>
-    <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs focus:outline-none focus:border-[#04bca6] focus:ring-1 focus:ring-[#04bca6]" id="select-location">
+    <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-3 min-h-12 text-base focus:outline-none focus:border-[#04bca6] focus:ring-1 focus:ring-[#04bca6]" id="select-location">
     <option data-i18n="form_opt_ruh" value="sa-ruh">السعودية — الرياض</option>
     <option data-i18n="form_opt_jed" value="sa-jed">السعودية — جدة والمنطقة الغربية</option>
     <option data-i18n="form_opt_amm" value="jo-amm">الأردن — عمّان</option>
@@ -665,13 +752,13 @@
     </div>
     <div>
     <label class="block text-[11px] font-bold text-slate-700 mb-1" data-i18n="form_branches">عدد الفروع</label>
-    <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs focus:outline-none focus:border-[#04bca6] focus:ring-1 focus:ring-[#04bca6]" id="select-branches">
+    <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-3 min-h-12 text-base focus:outline-none focus:border-[#04bca6] focus:ring-1 focus:ring-[#04bca6]" id="select-branches">
     <option data-i18n="form_br_1" value="1">صيدلية واحدة (فرع رئيسي)</option>
     <option data-i18n="form_br_2" value="2-4">سلسلة متوسطة (2 - 4 فروع)</option>
     <option data-i18n="form_br_3" value="5+">مجموعة صيدليات (5 فروع فأكثر)</option>
     </select>
     </div>
-    <button class="w-full bg-[#04bca6] hover:bg-[#008e7d] text-white font-bold text-xs py-3 rounded-full shadow-xs transition-colors flex items-center justify-center gap-2 mt-1 cursor-pointer" type="submit">
+    <button class="w-full bg-[#04bca6] hover:bg-[#008e7d] text-white font-bold text-base min-h-12 py-3 rounded-full shadow-xs transition-colors flex items-center justify-center gap-2 mt-2 cursor-pointer" type="submit">
     <span class="material-symbols-outlined text-[18px]">calendar_today</span>
     <span class="" data-i18n="form_submit_btn">تأكيد حجز الموعد</span>
     </button>
@@ -682,8 +769,14 @@
     </div>
     </section>
     </main>
+    <div class="lg:hidden fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 px-3 pt-2 safe-bottom transition-transform duration-200" id="mobile-sticky-cta">
+    <a class="w-full min-h-12 h-12 inline-flex items-center justify-center gap-2 rounded-full bg-[#04bca6] text-white font-bold text-base shadow-md shadow-teal-500/20" href="#overview" onclick="focusHeroPhone()">
+    <span class="material-symbols-outlined text-[20px]">swap_horiz</span>
+    <span data-i18n="sticky_cta">ابدأ التبادل الآن</span>
+    </a>
+    </div>
     <!-- 11. MINIMAL REFINED FOOTER -->
-    <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-xs">
+    <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-xs pb-24 lg:pb-0">
     <!-- Subtle ECG Wave Line -->
     <div class="w-full h-6 opacity-25 overflow-hidden">
     <svg class="w-full h-full text-teal-400" fill="none" preserveAspectRatio="none" viewBox="0 0 1000 40">
@@ -696,16 +789,16 @@
     <div class="flex items-center gap-3">
     <img alt="Pulse" class="h-6 w-auto brightness-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEO_Fc1za-mDm9IrdRHBjNJbfapjPohZQrbxltUZnuJjo1TZQi8rp5EEumbyyCE65rvfWp1dLcZoh282D3zQhfmwd0dOFdcDHL95fp2ibQFsag78U9fkqifRr3XVw7EsHRJHKV6Jgj4PJk5Yym_UspYT_KAXbM_R3Kto35tYTf5gyLRp048pcFK6Dv-qc-_89KTsLys1M9GFG1_zjIVqU-HTqQ5iKZl-bg-exFIEduZH-uWulYYNgIE4CYtk79oOA6Cg">
     <span class="text-base font-black text-white">Pulse</span>
-    <span class="text-[11px] text-slate-500" data-i18n="footer_tagline">| منصة متكاملة للصيدليات</span>
+    <span class="text-[11px] text-slate-500" data-i18n="footer_tagline">| تبادل P2P بين الصيدليات</span>
     </div>
     <!-- Footer Quick Links -->
-    <div class="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-300">
-    <a class="hover:text-teal-400 transition-colors" data-i18n="footer_home" href="#overview">الرئيسية</a>
-    <a class="hover:text-teal-400 transition-colors" data-i18n="footer_migration" href="#migration-showcase">نقل البيانات</a>
-    <a class="hover:text-teal-400 transition-colors" data-i18n="footer_features" href="#bento">المميزات</a>
-    <a class="hover:text-teal-400 transition-colors" data-i18n="footer_cashback" href="#wallet-cashback">الكاش باك</a>
-    <a class="hover:text-teal-400 transition-colors" data-i18n="footer_faq" href="#faq">الأسئلة الشائعة</a>
-    <a class="text-teal-400 hover:text-teal-300 flex items-center gap-1" href="https://wa.me/" target="_blank">
+    <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-3 text-xs text-slate-300">
+    <a class="hover:text-teal-400 transition-colors min-h-11 inline-flex items-center" data-i18n="footer_home" href="#overview">الرئيسية</a>
+    <a class="hover:text-teal-400 transition-colors min-h-11 inline-flex items-center" data-i18n="footer_migration" href="#how-p2p">كيف يعمل P2P</a>
+    <a class="hover:text-teal-400 transition-colors min-h-11 inline-flex items-center" data-i18n="footer_features" href="#bento">المنصة</a>
+    <a class="hover:text-teal-400 transition-colors min-h-11 inline-flex items-center" data-i18n="footer_cashback" href="#wallet-cashback">المحفظة</a>
+    <a class="hover:text-teal-400 transition-colors min-h-11 inline-flex items-center" data-i18n="footer_faq" href="#faq">الأسئلة الشائعة</a>
+    <a class="text-teal-400 hover:text-teal-300 flex items-center gap-1 min-h-11" href="https://wa.me/" target="_blank">
     <span class="material-symbols-outlined text-[14px]">chat</span>
     <span class="" data-i18n="footer_support">دعم الصيادلة</span>
     </a>
@@ -733,33 +826,82 @@
           dir: 'rtl',
           langCode: 'ar',
           label: 'العربية',
-          title: 'Aumet Pulse — نبض صيدليتك | إدارة ذكية، أرباح حقيقية، وبلا تعقيد',
+          title: 'Aumet Pulse — تبادل P2P بين الصيدليات | حوّل المخزون الراكد إلى كاش',
           nav_login: 'تسجيل الدخول',
           nav_demo_btn: 'احجز موعدًا للتجربة',
           nav_start_free: 'ابدأ مجاناً',
-          hero_badge: 'منصة متكاملة للصيدليات',
-          hero_title_1: 'صيدليتك كلها..',
-          hero_title_2: 'في مكان واحد',
-          hero_subtitle: 'كل ما تحتاجه لإدارة صيدليتك في مكان واحد: نقطة البيع، إدارة المخزون، والشراء المباشر من الموزعين المعتمدين عبر سوق أومِت، مع كاش باك حقيقي يساعدك على تغطية تكلفة اشتراكك.',
+          sticky_cta: 'ابدأ التبادل الآن',
+          hero_badge: 'تبادل صيدلية لصيدلية (P2P)',
+          hero_title_1: 'لا تشطب المخزون الراكد.',
+          hero_title_2: 'بعه لصيدلية تحتاجه.',
+          hero_subtitle: 'Pulse يطابق أصنافك البطيئة أو قريبة الانتهاء مع صيدليات موثّقة تبحث عنها اليوم. المبلغ يُحجز في المحفظة، والشحن الطبي المبرّد يوصل الطلب — بدل شطب رأس المال.',
           hero_cta_trial: 'ابدأ تجربتك المجانية',
           hero_cta_demo: 'احجز موعدًا للتجربة',
           hero_phone_title: 'ابدأ برقم جوالك',
           hero_phone_hint: 'أدخل الرقم فقط. نحدد بعدها الخطوة التالية تلقائياً.',
           hero_phone_btn: 'ابدأ',
           hero_phone_success: 'تم استلام رقمك. سنتابع معك بالخطوة التالية.',
-          hero_demo_label: 'هل تفضّل مشاهدة المنصة أولاً؟',
-          hero_demo_time: 'عرض حي خلال 15 دقيقة لشرح الربط وسوق أومِت',
+          hero_demo_label: 'هل تفضّل رؤية مطابقة حقيقية أولاً؟',
+          hero_demo_time: '15 دقيقة: نأخذ صنفاً راكداً من صيدليتك ونريك من يحتاجه الآن',
           hero_country_sa: 'السعودية',
           hero_country_jo: 'الأردن',
           hero_country_eg: 'مصر',
           hero_phone_label: 'رقم الجوال',
           hero_phone_error: 'أدخل رقم جوال صحيح للمتابعة',
-          hero_pill_nocard: 'بدون بطاقة بنكية',
-          hero_pill_offline: 'يعمل دون إنترنت (Offline-First)',
-          hero_pill_instant: 'تكامل مباشر مع سوق أومِت',
-          mockup_title: 'لوحة Pulse المباشرة — فرع الشفاء',
-          mockup_status: 'مزامنة تلقائية ومستمرة • متصل الآن',
-          mockup_live: 'مباشر',
+          hero_pill_nocard: 'تسوية مؤمّنة في المحفظة',
+          hero_pill_offline: 'شحن طبي مبرّد',
+          hero_pill_instant: 'صيدليات موثّقة فقط',
+          mockup_title: 'مطابقة P2P مباشرة — الرياض',
+          mockup_status: 'صيدلية النور ↔ صيدلية الشفاء 2',
+          mockup_live: 'مطابقة حيّة',
+          p2p_from_label: 'عندك (راكد)',
+          p2p_from_name: 'صيدلية النور',
+          p2p_from_status: 'راكد 4 أشهر • صلاحية 45 يوماً',
+          p2p_to_label: 'عندهم (نقص)',
+          p2p_to_name: 'صيدلية الشفاء 2',
+          p2p_to_need: 'يحتاج 15 عبوة اليوم',
+          p2p_to_patient: 'مريض ينتظر • 2.4 كم',
+          p2p_match_label: 'تم التطابق',
+          p2p_escrow: '+420$ في الضمان',
+          p2p_ship: 'شحن مبرّد خلال 3 ساعات',
+          p2p_secured: 'المحفظة تحجز المبلغ حتى تأكيد الاستلام',
+          p2p_confirm_btn: 'تأكيد التبادل',
+          pas_badge: 'المشكلة',
+          pas_title: 'أنت تخسر رأس المال مرتين',
+          pas_subtitle: 'مرة لأن الصنف راكد على رفّك. ومرة لأن مريضاً خرج فاضي من صيدلية مجاورة كانت تحتاجه.',
+          pain1_tag: 'كاش ميت',
+          pain1_title: 'المخزون الراكد يحبس رأس مالك',
+          pain1_desc: 'عبوات تجلس شهوراً. لا تُصرف، ولا تُعاد للمورد، والكاش محبوس في الكرتون.',
+          pain2_tag: 'خسارة مؤكدة',
+          pain2_title: 'الصلاحية تنتهي وأنت تنتظر الموزّع',
+          pain2_desc: 'كل شهر شطب. الموزّع لا يسترجع البطيء، والرف يتحوّل إلى فاتورة هدر.',
+          pain3_tag: 'فرصة ضائعة',
+          pain3_title: 'صيدلية الشارع تحتاج ما ترميه',
+          pain3_desc: 'مريض يطلع فاضي من صيدلية تبعد كيلومترين، وأنت تشطب نفس الصنف في اليوم التالي.',
+          how_badge: 'الحل: شبكة P2P',
+          how_title: 'ثلاث خطوات. من الرف إلى الكاش.',
+          how_subtitle: 'هذا مسار التبادل نفسه: أدرج الصنف، Pulse يطابق صيدلية موثّقة، والمحفظة تحجز المبلغ حتى الاستلام.',
+          how_scene_badge: 'مسار تبادل حي',
+          how_scene_id: 'P2P-1842',
+          how_scene_from_lbl: '1. أدرج',
+          how_scene_sku: 'أوجمنتين 1 جم',
+          how_scene_qty: '15 عبوة • راكد',
+          how_scene_match_lbl: '2. طابِق',
+          how_scene_to: 'صيدلية الشفاء 2',
+          how_scene_need: 'تحتاج الكمية اليوم',
+          how_scene_pay_lbl: '3. اقبض',
+          how_scene_pay: '+420$',
+          how_scene_escrow: 'محجوز في المحفظة',
+          how_scene_ship: 'شحن مبرّد • تأكيد الاستلام يفك الضمان',
+          how_scene_eta: 'وصول متوقع: 3 ساعات',
+          how_step1_title: 'أدرج الصنف الراكد من مخزونك',
+          how_step1_desc: 'اختر العبوات البطيئة أو قريبة الانتهاء. Pulse يعرضها على شبكة الصيدليات الموثّقة فقط.',
+          how_step2_title: 'مطابقة تلقائية مع صيدلية تحتاجه',
+          how_step2_desc: 'النظام يربط النقص القريب بالفائض عندك: نفس الصنف، نفس المدينة، بدون وسيط غير موثّق.',
+          how_step3_title: 'تسوية محفظة وشحن مبرّد',
+          how_step3_desc: 'المبلغ يُحجز حتى تأكيد الاستلام. الشحن الطبي المبرّد يحمي السلسلة، والكاش يعود لرأس مالك.',
+          how_cta_btn: 'ابدأ أول تبادل',
+          how_cta_demo: 'شاهد مطابقة على مخزونك',
           metric_sales_label: 'مبيعات اليوم',
           metric_sales_val: '48,250$',
           metric_sales_growth: 'نمو',
@@ -774,31 +916,11 @@
           mockup_drug_name: 'أوجمنتين 1 جم (15 عبوة)',
           mockup_distributor: 'المستودع الأفضل: المتحدة للتوزيع',
           mockup_order_btn: 'طلب بضغطة زر',
-          mockup_security: 'بيانات صيدليتك بأمان، حتى بدون إنترنت',
+          mockup_security: 'تسوية مؤمّنة • صيدليات موثّقة فقط',
           mockup_updated: 'تحديث قبل لحظات',
-          mig_badge: 'بدون أدنى تعقيد أو تعطيل للبيع',
-          mig_title: 'انقل بيانات صيدليتك ومخزونك في 5 دقائق',
-          mig_subtitle: 'استورد ملف Excel لنقل آلاف الأصناف والأسعار وتواريخ الصلاحية آلياً دون توقف عمليات الصرف والبيع.',
-          mig_drop_title: 'اسحب وأفلت ملف إكسل الأصناف هنا',
-          mig_drop_subtitle: 'يدعم ملفات .xlsx و .csv من أي برنامج صيدليات قديم',
-          mig_filename: 'قائمة_الأدوية_والمخزون.xlsx',
-          mig_file_status: '12,000 صنفاً • تم الفحص بنجاح 100%',
-          mig_ready: 'جاهز للاستيراد',
-          mig_step1_title: 'سحب وإفلات الملف',
-          mig_step1_desc: 'ارفع ملف بيانات صيدليتك الحالية بصيغته الأصلية بدون أي تعديل يدوي معقد.',
-          mig_step2_title: 'مطابقة آلية للباركود والأسعار',
-          mig_step2_desc: 'يتعرّف Pulse تلقائيًا على الأسماء العلمية والتجارية وأسعار الجملة، بدقة ومن دون إدخال يدوي.',
-          mig_step3_title: 'بدء البيع الفوري فوراً',
-          mig_step3_desc: 'صيدليتك جاهزة فوراً لإصدار الفواتير وقراءة الباركود دون أي توقف لخدمة المرضى.',
-          mig_cta_btn: 'طلب نقل بيانات مجاني',
-          mig_cta_expert: 'تحدث مع خبير التهيئة',
-          video_badge: 'فيديو توضيحي: نقل البيانات في 5 دقائق',
-          video_duration: '01:45 د',
-          video_caption: 'شاهد كيف يتم سحب وإفلات 12,000 صنف ومطابقتها فوراً',
-          video_subcaption: 'انقر للمشاهدة مع الصوت والشرح التفاعلي',
-          bento_badge: 'المميزات الأساسية',
-          bento_title: 'أربع ركائز صُممت خصيصاً لراحة الصيدلي',
-          bento_subtitle: 'حلول تكنولوجية حديثة تقضي على التوقفات، وتقلص الهدر، وتزيد الربحية.',
+          bento_badge: 'لماذا P2P يعمل داخل Pulse',
+          bento_title: 'التبادل يحتاج كاشير ومخزون ومحفظة في نفس النظام',
+          bento_subtitle: 'P2P ليس سوقاً منفصلاً. هو طبقة فوق مخزونك الحي، حتى لا تبيع صنفاً غير موجود أو منتهي الصلاحية.',
           card1_badge: 'يعمل دون إنترنت 100%',
           card1_title: 'كاشير سريع يعمل دون أي انقطاع',
           card1_desc: 'مهما حدث انقطاع في شبكة الإنترنت، يستمر الكاشير في قراءة الباركود وإصدار الفواتير المعتمدة بدون أي بطء، مع مزامنة تلقائية وفورية فور عودة الاتصال.',
@@ -844,7 +966,7 @@
           card4_scene: 'تم بيع 15 عبوة من المخزون الراكد مع استلام مبرّد خلال 3 ساعات.',
           wallet_badge: 'محفظة الصيدلية الذكية',
           wallet_title: 'استرداد نقدي حقيقي (Cashback)<br>يغطي تكلفة اشتراك صيدليتك',
-          wallet_subtitle: 'مع كل طلبية أدوية عبر موزعي Pulse، يتراكم كاش باك حقيقي في محفظتك ليُخصم من اشتراكك السنوي أو يُحوّل لحسابك.',
+          wallet_subtitle: 'محفظة واحدة لتسويات P2P والكاش باك من الموزعين. المبلغ يُحجز عند التبادل حتى الاستلام، ثم يصبح رصيداً حقيقياً يُخصم من اشتراكك أو يُحوّل لحسابك.',
           wallet_f1: 'كاش باك تراكمي على الطلبيات',
           wallet_f2: 'إمكانية تغطية الاشتراك السنوي 100%',
           wallet_bal_label: 'الرصيد المتاح في المحفظة',
@@ -859,18 +981,18 @@
           wallet_updated_now: 'محدّث لحظياً',
           faq_badge: 'الأسئلة الشائعة',
           faq_title: 'إجابات واضحة ومباشرة',
-          faq_subtitle: 'كل ما تحتاج معرفته عن نقل البيانات، والتشغيل اليومي، والدعم.',
-          faq_q1: 'كيف يتم نقل بيانات صيدليتي ومخزوني القديم إلى Pulse؟',
-          faq_a1: 'ارفع ملف Excel من برنامجك الحالي، ويتم نقل الأصناف والأسعار خلال 5 دقائق. ويمكن لفريق الدعم إتمام النقل مجاناً دون توقف البيع.',
-          faq_q2: 'ماذا يحدث عند انقطاع الاتصال بالإنترنت أثناء ساعات الذروة؟',
-          faq_a2: 'الكاشير يستمر في البيع وقراءة الباركود حتى مع انقطاع الإنترنت، وبمجرد عودة الاتصال تتم مزامنة كل الفواتير تلقائياً.',
-          faq_q3: 'كيف يتم احتساب الاسترداد النقدي (Cashback) وهل هو حقيقي؟',
-          faq_a3: 'نعم، كاش باك حقيقي يُحتسب من طلبياتك عبر موزعي Pulse، ويتراكم في محفظتك ليُخصم من اشتراكك السنوي أو يُحوّل لحسابك.',
-          faq_q4: 'هل أستطيع متابعة مبيعات الفروع والأرباح من هاتفي المحمول؟',
-          faq_a4: 'نعم، تتابع مبيعات الفروع والأرباح وتنبيهات المخزون من هاتفك مباشرة.',
+          faq_subtitle: 'كيف يعمل التبادل بين الصيدليات، وكيف تصل الفلوس، وماذا عن التبريد والبيانات.',
+          faq_q1: 'هل التبادل بين الصيدليات (P2P) نظامي وآمن؟',
+          faq_a1: 'التبادل يتم فقط بين صيدليات موثّقة داخل Pulse. كل صفقة مربوطة بصنف وصلاحية وكميات من المخزون الحي، مع تسوية محفظة حتى تأكيد الاستلام.',
+          faq_q2: 'كيف تصلني فلوس التبادل؟ هل هي كاش حقيقي؟',
+          faq_a2: 'نعم. المبلغ يُحجز في المحفظة عند التطابق، ويُحرَّر بعد تأكيد الاستلام. يمكنك استخدامه لتغطية الاشتراك أو تحويله وفق سياسة المحفظة.',
+          faq_q3: 'ماذا عن الأدوية التي تحتاج تبريداً؟',
+          faq_a3: 'الشحن الطبي المبرّد جزء من مسار P2P للأصناف الحساسة. لا يتم فك الضمان إلا بعد تأكيد الاستلام وسلامة السلسلة.',
+          faq_q4: 'هل أحتاج نقل بياناتي أولاً حتى أبيع راكداً؟',
+          faq_a4: 'نعم، حتى لا تُعرض كمية غير موجودة. ننقل الأصناف والأسعار من ملفك الحالي خلال دقائق، والكاشير يعمل حتى أثناء النقل.',
           demo_badge: 'تجربة مجانية بالكامل',
-          demo_title: 'احجز موعدًا للتجربة وابدأ مجاناً',
-          demo_desc: '15 دقيقة نوضح لك كيف يسرّع Pulse مبيعاتك. بدون التزام وبدون بطاقة بنكية.',
+          demo_title: 'شاهد مطابقة P2P على مخزونك الحقيقي',
+          demo_desc: '15 دقيقة. نأخذ صنفاً راكداً من صيدليتك ونريك من يحتاجه الآن — بدون التزام وبدون بطاقة.',
           demo_wa_btn: 'تواصل فوراً عبر واتساب',
           form_title: 'بيانات التواصل لتأكيد الموعد',
           form_subtitle: 'سيتواصل معك خبير أنظمة صيدلية لتفعيل حسابك وتحديد الموعد المناسب.',
@@ -891,11 +1013,11 @@
           form_br_1: 'صيدلية واحدة (فرع رئيسي)',
           form_br_2: 'سلسلة متوسطة (2 - 4 فروع)',
           form_br_3: 'مجموعة صيدليات (5 فروع فأكثر)',
-          footer_tagline: '| منصة متكاملة للصيدليات',
+          footer_tagline: '| تبادل P2P بين الصيدليات',
           footer_home: 'الرئيسية',
-          footer_migration: 'نقل البيانات',
-          footer_features: 'المميزات',
-          footer_cashback: 'الكاش باك',
+          footer_migration: 'كيف يعمل P2P',
+          footer_features: 'المنصة',
+          footer_cashback: 'المحفظة',
           footer_faq: 'الأسئلة الشائعة',
           footer_support: 'دعم الصيادلة',
           footer_copyright: '© 2025 Aumet Inc. جميع الحقوق محفوظة لمنصة Pulse.',
@@ -907,33 +1029,82 @@
           dir: 'ltr',
           langCode: 'en',
           label: 'English',
-          title: 'Aumet Pulse — Your Pharmacy Pulse | Smart Management, Real Profits, Zero Hassle',
+          title: 'Aumet Pulse — Pharmacy-to-Pharmacy P2P | Turn dead stock into cash',
           nav_login: 'Sign In',
           nav_demo_btn: 'Book a trial appointment',
           nav_start_free: 'Start Free',
-          hero_badge: 'All-in-one pharmacy platform',
-          hero_title_1: 'Your whole pharmacy..',
-          hero_title_2: 'in one place',
-          hero_subtitle: 'Everything you need to run your pharmacy in one place: POS, inventory, and direct purchasing from certified distributors via the Aumet marketplace, with real cashback that helps cover your subscription.',
+          sticky_cta: 'Start exchanging now',
+          hero_badge: 'Pharmacy-to-pharmacy exchange (P2P)',
+          hero_title_1: 'Don\'t write off dead stock.',
+          hero_title_2: 'Sell it to a pharmacy that needs it.',
+          hero_subtitle: 'Pulse matches your slow or near-expiry SKUs with verified pharmacies hunting them today. Funds sit in escrow, cold-chain delivery moves the stock — instead of a write-off.',
           hero_cta_trial: 'Start your free trial',
           hero_cta_demo: 'Book a trial appointment',
           hero_phone_title: 'Start with your mobile number',
           hero_phone_hint: 'Enter the number only. We will decide the next step automatically.',
           hero_phone_btn: 'Start',
           hero_phone_success: 'Number received. We will continue with the next step.',
-          hero_demo_label: 'Prefer to see the platform first?',
-          hero_demo_time: 'A live 15-minute walkthrough of setup and Aumet Marketplace',
+          hero_demo_label: 'Prefer to see a real match first?',
+          hero_demo_time: '15 minutes: we take one slow SKU from your shelf and show who needs it now',
           hero_country_sa: 'Saudi Arabia',
           hero_country_jo: 'Jordan',
           hero_country_eg: 'Egypt',
           hero_phone_label: 'Mobile number',
           hero_phone_error: 'Enter a valid mobile number to continue',
-          hero_pill_nocard: 'No credit card required',
-          hero_pill_offline: 'Works offline (Offline-First)',
-          hero_pill_instant: 'Direct integration with Aumet Marketplace',
-          mockup_title: 'Pulse Live Dashboard — Al Shifa Branch',
-          mockup_status: 'Continuous automatic sync • Online now',
-          mockup_live: 'LIVE',
+          hero_pill_nocard: 'Escrow wallet settlement',
+          hero_pill_offline: 'Medical cold-chain shipping',
+          hero_pill_instant: 'Verified pharmacies only',
+          mockup_title: 'Live P2P match — Riyadh',
+          mockup_status: 'Al-Nour Pharmacy ↔ Al-Shifa Pharmacy 2',
+          mockup_live: 'LIVE MATCH',
+          p2p_from_label: 'Yours (slow)',
+          p2p_from_name: 'Al-Nour Pharmacy',
+          p2p_from_status: 'Idle 4 months • 45 days to expiry',
+          p2p_to_label: 'Theirs (short)',
+          p2p_to_name: 'Al-Shifa Pharmacy 2',
+          p2p_to_need: 'Needs 15 packs today',
+          p2p_to_patient: 'Patient waiting • 2.4 km',
+          p2p_match_label: 'Matched',
+          p2p_escrow: '+$420 in escrow',
+          p2p_ship: 'Cold-chain delivery in 3 hours',
+          p2p_secured: 'Wallet holds funds until delivery is confirmed',
+          p2p_confirm_btn: 'Confirm exchange',
+          pas_badge: 'The problem',
+          pas_title: 'You lose capital twice',
+          pas_subtitle: 'Once because the SKU sits idle on your shelf. Again because a patient walked out empty from a nearby pharmacy that needed it.',
+          pain1_tag: 'Frozen cash',
+          pain1_title: 'Dead stock locks your capital',
+          pain1_desc: 'Packs sit for months. Not dispensed, not returned to the supplier, cash trapped in cardboard.',
+          pain2_tag: 'Certain loss',
+          pain2_title: 'Expiry hits while you wait on the warehouse',
+          pain2_desc: 'Write-offs every month. Distributors will not take slow movers back. The shelf becomes a waste invoice.',
+          pain3_tag: 'Missed demand',
+          pain3_title: 'The pharmacy down the street needs what you dump',
+          pain3_desc: 'A patient leaves empty two kilometers away. You write off the same SKU the next day.',
+          how_badge: 'The fix: P2P network',
+          how_title: 'Three steps. Shelf to cash.',
+          how_subtitle: 'This is the exchange path: list the SKU, Pulse matches a verified pharmacy, the wallet holds funds until delivery.',
+          how_scene_badge: 'Live exchange path',
+          how_scene_id: 'P2P-1842',
+          how_scene_from_lbl: '1. List',
+          how_scene_sku: 'Augmentin 1g',
+          how_scene_qty: '15 packs • slow',
+          how_scene_match_lbl: '2. Match',
+          how_scene_to: 'Al-Shifa Pharmacy 2',
+          how_scene_need: 'Needs the quantity today',
+          how_scene_pay_lbl: '3. Collect',
+          how_scene_pay: '+$420',
+          how_scene_escrow: 'Held in wallet',
+          how_scene_ship: 'Cold chain • delivery confirmation releases escrow',
+          how_scene_eta: 'ETA: 3 hours',
+          how_step1_title: 'List the slow SKU from your inventory',
+          how_step1_desc: 'Pick idle or near-expiry packs. Pulse shows them only to verified pharmacies on the network.',
+          how_step2_title: 'Auto-match a pharmacy that needs it',
+          how_step2_desc: 'The system links nearby shortages to your surplus: same SKU, same city, no unverified middleman.',
+          how_step3_title: 'Wallet settlement and cold-chain shipping',
+          how_step3_desc: 'Funds stay in escrow until receipt is confirmed. Medical cold chain protects the product. Capital comes back as cash.',
+          how_cta_btn: 'Start your first exchange',
+          how_cta_demo: 'See a match on your stock',
           metric_sales_label: "Today's Sales",
           metric_sales_val: '$48,250',
           metric_sales_growth: 'Growth',
@@ -948,31 +1119,11 @@
           mockup_drug_name: 'Augmentin 1g (15 boxes)',
           mockup_distributor: 'Best Supplier: United Medical Distribution',
           mockup_order_btn: '1-Click Order',
-          mockup_security: 'Your pharmacy data stays safe, even offline',
+          mockup_security: 'Escrow settlement • verified pharmacies only',
           mockup_updated: 'Updated just now',
-          mig_badge: 'Seamless Migration Without Downtime',
-          mig_title: 'Migrate Your Pharmacy & Inventory in 5 Minutes',
-          mig_subtitle: 'Import your Excel sheet to automatically sync thousands of items, bar codes, pricing, and expiration dates without disrupting daily sales.',
-          mig_drop_title: 'Drag & drop inventory Excel file here',
-          mig_drop_subtitle: 'Supports .xlsx & .csv from any legacy pharmacy software',
-          mig_filename: 'Inventory_and_Drugs_Catalog.xlsx',
-          mig_file_status: '12,000 SKUs • Validated 100% Successfully',
-          mig_ready: 'Ready to Import',
-          mig_step1_title: 'Drag & Drop Your File',
-          mig_step1_desc: 'Upload your current pharmacy export in its native format without manual reformatting.',
-          mig_step2_title: 'Auto-Mapping of Barcodes & Prices',
-          mig_step2_desc: 'Pulse automatically detects scientific/commercial names, wholesale costs, and retail prices.',
-          mig_step3_title: 'Start Selling Immediately',
-          mig_step3_desc: 'Your pharmacy counters are instantly operational for checkout and barcode scans with zero interruption.',
-          mig_cta_btn: 'Request Free Data Migration',
-          mig_cta_expert: 'Chat With Onboarding Specialist',
-          video_badge: 'Demo video: migrate data in 5 minutes',
-          video_duration: '01:45',
-          video_caption: 'Watch how 12,000 items are dropped in and mapped instantly',
-          video_subcaption: 'Click to watch with audio and interactive walkthrough',
-          bento_badge: 'Core Features',
-          bento_title: 'Four Pillars Engineered for Pharmacists',
-          bento_subtitle: 'Next-generation tech solving unexpected downtime, cutting expired wastage, and boosting net margins.',
+          bento_badge: 'Why P2P lives inside Pulse',
+          bento_title: 'Exchange only works if POS, stock, and wallet share one system',
+          bento_subtitle: 'P2P is not a separate marketplace. It sits on live inventory so you never sell a missing or expired pack.',
           card1_badge: '100% Offline Capable',
           card1_title: 'High-Speed POS That Never Stops',
           card1_desc: 'Even if the internet drops entirely during peak hours, your cashiers continue scanning barcodes and issuing receipts instantly, syncing automatically upon reconnecting.',
@@ -1018,7 +1169,7 @@
           card4_scene: '15 slow-moving packs sold, with cold delivery in 3 hours.',
           wallet_badge: 'Smart Pharmacy Wallet',
           wallet_title: 'Real Cash Back That Covers<br>Your Entire Software Subscription',
-          wallet_subtitle: 'With every pharmaceutical order through certified Pulse distributors, you accrue real cashback that automatically offsets your annual subscription or transfers to your account.',
+          wallet_subtitle: 'One wallet for P2P settlements and distributor cashback. Funds stay in escrow until delivery, then become real balance you can offset against your subscription or transfer out.',
           wallet_f1: 'Cumulative cashback on all wholesale orders',
           wallet_f2: 'Capability to cover 100% of software costs',
           wallet_bal_label: 'Available Wallet Balance',
@@ -1033,18 +1184,18 @@
           wallet_updated_now: 'Updated in real-time',
           faq_badge: 'Frequently Asked Questions',
           faq_title: 'Clear & Direct Answers',
-          faq_subtitle: 'Everything you need to know about switching, daily operations, and technical support.',
-          faq_q1: 'How do I migrate my old pharmacy and inventory data to Pulse?',
-          faq_a1: 'Upload an Excel file from your current system, and items and prices are migrated within 5 minutes. Support can also complete the transfer for free without stopping sales.',
-          faq_q2: 'What happens if our internet connection drops during peak rush hours?',
-          faq_a2: 'The cashier keeps selling and scanning barcodes even if the internet drops. When the connection returns, every invoice syncs automatically.',
-          faq_q3: 'How is the cashback earned and is it real withdrawable money?',
-          faq_a3: 'Yes. Real cashback is calculated on your Pulse distributor orders, then stored in your wallet to cover your yearly subscription or transfer to your account.',
-          faq_q4: 'Can I monitor multi-branch sales and margins from my mobile phone?',
-          faq_a4: 'Yes. You can track branch sales, profits, and inventory alerts directly from your phone.',
+          faq_subtitle: 'How pharmacy-to-pharmacy exchange works, how you get paid, cold chain, and your data.',
+          faq_q1: 'Is pharmacy-to-pharmacy (P2P) exchange legitimate and safe?',
+          faq_a1: 'Exchanges run only between verified Pulse pharmacies. Every deal is tied to a live SKU, expiry, and quantity, with wallet escrow until delivery is confirmed.',
+          faq_q2: 'How do I get paid? Is it real cash?',
+          faq_a2: 'Yes. Funds are held in the wallet at match time and released after receipt is confirmed. Use them toward your subscription or transfer per wallet policy.',
+          faq_q3: 'What about medicines that need refrigeration?',
+          faq_a3: 'Medical cold-chain shipping is part of the P2P path for sensitive SKUs. Escrow does not release until receipt and chain integrity are confirmed.',
+          faq_q4: 'Do I need to migrate my data before I can sell slow stock?',
+          faq_a4: 'Yes — so you never list a quantity you do not have. We migrate items and prices from your current file in minutes, and POS keeps running during the transfer.',
           demo_badge: '100% Free Trial',
-          demo_title: 'Book a trial appointment and start free',
-          demo_desc: '15 minutes to see how Pulse speeds up your sales. No commitment, no credit card.',
+          demo_title: 'See a P2P match on your real inventory',
+          demo_desc: '15 minutes. We take one slow SKU from your pharmacy and show who needs it now — no commitment, no card.',
           demo_wa_btn: 'Chat Instantly on WhatsApp',
           form_title: 'Contact details to confirm your appointment',
           form_subtitle: 'A pharmacy systems specialist will reach out to activate your sandbox and coordinate the timing.',
@@ -1065,11 +1216,11 @@
           form_br_1: '1 Pharmacy (Single Location)',
           form_br_2: 'Medium Chain (2 - 4 Branches)',
           form_br_3: 'Pharmacy Group (5+ Branches)',
-          footer_tagline: '| All-in-one pharmacy platform',
+          footer_tagline: '| Pharmacy-to-pharmacy P2P',
           footer_home: 'Overview',
-          footer_migration: 'Migration',
-          footer_features: 'Features',
-          footer_cashback: 'Cashback',
+          footer_migration: 'How P2P works',
+          footer_features: 'Platform',
+          footer_cashback: 'Wallet',
           footer_faq: 'FAQ',
           footer_support: 'Pharmacist Support',
           footer_copyright: '© 2025 Aumet Inc. All rights reserved for Pulse Pharmacy OS.',
@@ -1081,33 +1232,82 @@
           dir: 'ltr',
           langCode: 'fr',
           label: 'Français',
-          title: 'Aumet Pulse — Le Pouls de Votre Pharmacie | Gestion Intelligente, Zéro Tracas',
+          title: 'Aumet Pulse — Échange P2P entre pharmacies | Transformez les stocks dormants en cash',
           nav_login: 'Connexion',
           nav_demo_btn: 'Réserver un rendez-vous d’essai',
           nav_start_free: 'Démarrer Gratuitement',
-          hero_badge: 'Une plateforme tout-en-un pour pharmacies',
-          hero_title_1: 'Toute votre pharmacie..',
-          hero_title_2: 'en un seul endroit',
-          hero_subtitle: 'Tout ce dont vous avez besoin pour gérer votre pharmacie au même endroit : caisse, stocks, et achat direct auprès des distributeurs agréés via le marketplace Aumet, avec un cashback réel qui aide à couvrir votre abonnement.',
+          sticky_cta: 'Lancer l’échange maintenant',
+          hero_badge: 'Échange pharmacie à pharmacie (P2P)',
+          hero_title_1: 'Ne soldez pas le stock dormant.',
+          hero_title_2: 'Vendez-le à une pharmacie qui en a besoin.',
+          hero_subtitle: 'Pulse apparie vos références lentes ou proches de la péremption avec des pharmacies vérifiées qui les cherchent aujourd’hui. Le montant est séquestré, la livraison chaîne du froid part — au lieu d’une perte sèche.',
           hero_cta_trial: 'Commencer l’essai gratuit',
           hero_cta_demo: 'Réserver un rendez-vous d’essai',
           hero_phone_title: 'Commencez avec votre numéro de mobile',
           hero_phone_hint: 'Saisissez uniquement le numéro. Nous déterminons ensuite la suite automatiquement.',
           hero_phone_btn: 'Commencer',
           hero_phone_success: 'Numéro reçu. Nous poursuivrons avec l’étape suivante.',
-          hero_demo_label: 'Vous préférez voir la plateforme d’abord ?',
-          hero_demo_time: 'Une session live de 15 minutes sur le paramétrage et le marketplace Aumet',
+          hero_demo_label: 'Vous préférez voir une vraie correspondance d’abord ?',
+          hero_demo_time: '15 minutes : on prend une référence dormante de votre officine et on montre qui en a besoin maintenant',
           hero_country_sa: 'Arabie Saoudite',
           hero_country_jo: 'Jordanie',
           hero_country_eg: 'Égypte',
           hero_phone_label: 'Numéro de mobile',
           hero_phone_error: 'Saisissez un numéro de mobile valide',
-          hero_pill_nocard: 'Sans carte bancaire',
-          hero_pill_offline: 'Fonctionne hors ligne (Offline-First)',
-          hero_pill_instant: 'Intégration directe avec le marketplace Aumet',
-          mockup_title: 'Tableau de Bord Pulse en Direct — Pharmacie Al-Shifa',
-          mockup_status: 'Synchronisation automatique continue • En ligne',
-          mockup_live: 'EN DIRECT',
+          hero_pill_nocard: 'Règlement séquestré au portefeuille',
+          hero_pill_offline: 'Livraison médicale réfrigérée',
+          hero_pill_instant: 'Pharmacies vérifiées uniquement',
+          mockup_title: 'Correspondance P2P en direct — Riyad',
+          mockup_status: 'Pharmacie Al-Nour ↔ Pharmacie Al-Shifa 2',
+          mockup_live: 'MATCH LIVE',
+          p2p_from_label: 'Chez vous (dormant)',
+          p2p_from_name: 'Pharmacie Al-Nour',
+          p2p_from_status: 'Immobile 4 mois • 45 jours avant péremption',
+          p2p_to_label: 'Chez eux (manque)',
+          p2p_to_name: 'Pharmacie Al-Shifa 2',
+          p2p_to_need: 'Besoin de 15 boîtes aujourd’hui',
+          p2p_to_patient: 'Patient en attente • 2,4 km',
+          p2p_match_label: 'Correspondance trouvée',
+          p2p_escrow: '+420 $ en séquestre',
+          p2p_ship: 'Livraison chaîne du froid sous 3 heures',
+          p2p_secured: 'Le portefeuille retient le montant jusqu’à confirmation de réception',
+          p2p_confirm_btn: 'Confirmer l’échange',
+          pas_badge: 'Le problème',
+          pas_title: 'Vous perdez du capital deux fois',
+          pas_subtitle: 'Une fois parce que la référence dort sur votre rayon. Une autre parce qu’un patient est parti les mains vides d’une officine voisine qui en avait besoin.',
+          pain1_tag: 'Cash bloqué',
+          pain1_title: 'Le stock dormant immobilise votre trésorerie',
+          pain1_desc: 'Des boîtes restent des mois. Ni délivrées, ni reprises par le grossiste : le cash est coincé dans le carton.',
+          pain2_tag: 'Perte certaine',
+          pain2_title: 'La péremption arrive pendant que vous attendez le répartiteur',
+          pain2_desc: 'Des destructions chaque mois. Le grossiste ne reprend pas les lents. Le rayon devient une facture de gaspillage.',
+          pain3_tag: 'Demande manquée',
+          pain3_title: 'La pharmacie d’à côté a besoin de ce que vous jetez',
+          pain3_desc: 'Un patient repart sans traitement à deux kilomètres. Vous soldez la même référence le lendemain.',
+          how_badge: 'La solution : réseau P2P',
+          how_title: 'Trois étapes. Du rayon au cash.',
+          how_subtitle: 'C’est le parcours d’échange : vous listez, Pulse apparie une pharmacie vérifiée, le portefeuille séquestre jusqu’à la réception.',
+          how_scene_badge: 'Parcours d’échange live',
+          how_scene_id: 'P2P-1842',
+          how_scene_from_lbl: '1. Lister',
+          how_scene_sku: 'Augmentin 1g',
+          how_scene_qty: '15 boîtes • dormant',
+          how_scene_match_lbl: '2. Apparier',
+          how_scene_to: 'Pharmacie Al-Shifa 2',
+          how_scene_need: 'Besoin de la quantité aujourd’hui',
+          how_scene_pay_lbl: '3. Encaisser',
+          how_scene_pay: '+420 $',
+          how_scene_escrow: 'Séquestré au portefeuille',
+          how_scene_ship: 'Chaîne du froid • la réception libère le séquestre',
+          how_scene_eta: 'Arrivée prévue : 3 heures',
+          how_step1_title: 'Listez la référence dormante depuis votre stock',
+          how_step1_desc: 'Choisissez les boîtes lentes ou proches de la date. Pulse les montre uniquement aux pharmacies vérifiées.',
+          how_step2_title: 'Appariement automatique avec une officine qui en a besoin',
+          how_step2_desc: 'Le système relie le manque proche à votre surplus : même référence, même ville, sans intermédiaire non vérifié.',
+          how_step3_title: 'Règlement portefeuille et livraison réfrigérée',
+          how_step3_desc: 'Le montant reste séquestré jusqu’à confirmation de réception. La chaîne du froid protège le produit. Le capital revient en cash.',
+          how_cta_btn: 'Lancer le premier échange',
+          how_cta_demo: 'Voir une correspondance sur votre stock',
           metric_sales_label: 'Ventes du Jour',
           metric_sales_val: '48 250 $',
           metric_sales_growth: 'Hausse',
@@ -1122,31 +1322,11 @@
           mockup_drug_name: 'Augmentin 1g (15 boîtes)',
           mockup_distributor: 'Meilleur grossiste: United Pharma Distribution',
           mockup_order_btn: 'Commander en 1 Clic',
-          mockup_security: 'Les données de votre pharmacie restent protégées, même hors ligne',
+          mockup_security: 'Règlement séquestré • pharmacies vérifiées uniquement',
           mockup_updated: 'Actualisé à l’instant',
-          mig_badge: 'Migration fluide sans interruption de service',
-          mig_title: 'Migrez vos données et votre stock en 5 minutes',
-          mig_subtitle: 'Importez votre fichier Excel pour transférer automatiquement des milliers de références, codes-barres et dates de péremption sans stopper vos ventes.',
-          mig_drop_title: 'Glissez-déposez votre fichier Excel ici',
-          mig_drop_subtitle: 'Compatible avec les exports .xlsx et .csv de tout ancien logiciel',
-          mig_filename: 'Catalogue_Médicaments_et_Stocks.xlsx',
-          mig_file_status: '12 000 articles • Contrôle validé à 100%',
-          mig_ready: 'Prêt pour l’import',
-          mig_step1_title: 'Glisser et Déposer le Fichier',
-          mig_step1_desc: 'Téléversez le fichier de données de votre ancienne pharmacie sans modification manuelle.',
-          mig_step2_title: 'Appariement Automatique des Références',
-          mig_step2_desc: 'Pulse identifie avec précision dénominations scientifiques, prix d’achat et tarifs publics.',
-          mig_step3_title: 'Vente Immédiate au Comptoir',
-          mig_step3_desc: 'Vos terminaux de vente sont immédiatement prêts à encaisser et scanner sans bloquer les patients.',
-          mig_cta_btn: 'Demander une Migration Gratuite',
-          mig_cta_expert: 'Parler à un Spécialiste',
-          video_badge: 'Vidéo : migrer les données en 5 minutes',
-          video_duration: '01:45',
-          video_caption: 'Voyez comment 12 000 articles sont importés et associés instantanément',
-          video_subcaption: 'Cliquez pour regarder avec le son et le guidage interactif',
-          bento_badge: 'Fonctionnalités Clés',
-          bento_title: 'Quatre Piliers Conçus pour la Tranquillité du Pharmacien',
-          bento_subtitle: 'Des technologies modernes éliminant les pannes, réduisant le gaspillage et augmentant vos marges.',
+          bento_badge: 'Pourquoi le P2P vit dans Pulse',
+          bento_title: 'L’échange n’existe que si caisse, stock et portefeuille sont le même système',
+          bento_subtitle: 'Le P2P n’est pas un marketplace séparé. Il s’appuie sur le stock live pour ne jamais vendre une boîte manquante ou périmée.',
           card1_badge: '100% Hors-Ligne',
           card1_title: 'Encaissement Rapide Sans Interruption',
           card1_desc: 'Même lors d’une coupure totale d’Internet aux heures d’affluence, la caisse continue de scanner et d’imprimer instantanément avec synchronisation automatique au retour du réseau.',
@@ -1192,7 +1372,7 @@
           card4_scene: '15 boîtes à rotation lente vendues, livrées sous 3 heures.',
           wallet_badge: 'Portefeuille Pharmacie Intelligent',
           wallet_title: 'Un Véritable Cashback qui Finance<br>Votre Abonnement Logiciel',
-          wallet_subtitle: 'Sur chaque réassort passé via les distributeurs partenaires de Pulse, vous accumulez un solde réel déduit automatiquement de vos frais annuels de licence.',
+          wallet_subtitle: 'Un seul portefeuille pour les règlements P2P et le cashback grossistes. Le montant reste séquestré jusqu’à la livraison, puis devient un solde réel déductible de l’abonnement ou transférable.',
           wallet_f1: 'Cashback cumulable sur chaque commande',
           wallet_f2: 'Couverture possible de 100% de la licence',
           wallet_bal_label: 'Solde Disponible sur le Portefeuille',
@@ -1207,18 +1387,18 @@
           wallet_updated_now: 'Mis à jour en temps réel',
           faq_badge: 'Questions Fréquentes',
           faq_title: 'Des Réponses Claires et Concrètes',
-          faq_subtitle: 'Tout ce que vous devez savoir sur la migration, l’utilisation quotidienne et le support technique.',
-          faq_q1: 'Comment migrer les données et l’inventaire de mon ancien logiciel vers Pulse ?',
-          faq_a1: 'Importez un fichier Excel de votre logiciel actuel : les articles et les prix sont transférés en 5 minutes. L’équipe support peut aussi le faire gratuitement, sans interrompre les ventes.',
-          faq_q2: 'Que se passe-t-il en cas de coupure d’Internet pendant les heures de pointe ?',
-          faq_a2: 'La caisse continue de vendre et de scanner même sans Internet. Dès le retour de la connexion, toutes les factures se synchronisent automatiquement.',
-          faq_q3: 'Comment le cashback est-il calculé et s’agit-il d’argent réel ?',
-          faq_a3: 'Oui. Un cashback réel est calculé sur vos commandes Pulse, puis stocké dans votre portefeuille pour couvrir l’abonnement annuel ou être viré sur votre compte.',
-          faq_q4: 'Puis-je suivre le chiffre d’affaires et les marges de mes filiales sur smartphone ?',
-          faq_a4: 'Oui. Vous suivez les ventes, les marges et les alertes de stock de vos officines directement depuis votre téléphone.',
+          faq_subtitle: 'Comment fonctionne l’échange entre pharmacies, comment vous êtes payé, la chaîne du froid et vos données.',
+          faq_q1: 'L’échange entre pharmacies (P2P) est-il légitime et sûr ?',
+          faq_a1: 'Les échanges n’ont lieu qu’entre pharmacies Pulse vérifiées. Chaque opération est liée à une référence, une date et une quantité live, avec séquestre jusqu’à confirmation de réception.',
+          faq_q2: 'Comment suis-je payé ? Est-ce du cash réel ?',
+          faq_a2: 'Oui. Le montant est séquestré au matching et libéré après confirmation de réception. Vous l’utilisez pour l’abonnement ou le transférez selon la politique du portefeuille.',
+          faq_q3: 'Et les médicaments qui nécessitent le froid ?',
+          faq_a3: 'La livraison médicale réfrigérée fait partie du parcours P2P pour les références sensibles. Le séquestre n’est pas libéré avant confirmation de réception et d’intégrité de la chaîne.',
+          faq_q4: 'Dois-je migrer mes données avant de vendre du stock dormant ?',
+          faq_a4: 'Oui, pour ne jamais afficher une quantité inexistante. Nous transférons articles et prix depuis votre fichier actuel en quelques minutes, et la caisse continue pendant le transfert.',
           demo_badge: 'Essai 100% Gratuit',
-          demo_title: 'Réservez un rendez-vous d’essai et démarrez gratuitement',
-          demo_desc: '15 minutes pour voir comment Pulse accélère vos ventes. Sans engagement, sans carte bancaire.',
+          demo_title: 'Voyez une correspondance P2P sur votre vrai stock',
+          demo_desc: '15 minutes. On prend une référence dormante de votre pharmacie et on montre qui en a besoin maintenant — sans engagement, sans carte.',
           demo_wa_btn: 'Échanger Directement sur WhatsApp',
           form_title: 'Coordonnées pour confirmer votre rendez-vous',
           form_subtitle: 'Un conseiller spécialisé prendra contact avec vous pour paramétrer votre accès d’essai.',
@@ -1239,11 +1419,11 @@
           form_br_1: '1 Pharmacie (Officine Unique)',
           form_br_2: 'Réseau Moyen (2 à 4 Officines)',
           form_br_3: 'Groupe / Chaîne (5+ Officines)',
-          footer_tagline: '| Plateforme tout-en-un pour pharmacies',
+          footer_tagline: '| Échange P2P entre pharmacies',
           footer_home: 'Accueil',
-          footer_migration: 'Migration',
-          footer_features: 'Fonctionnalités',
-          footer_cashback: 'Cashback',
+          footer_migration: 'Comment marche le P2P',
+          footer_features: 'Plateforme',
+          footer_cashback: 'Portefeuille',
           footer_faq: 'FAQ',
           footer_support: 'Support Pharmaciens',
           footer_copyright: '© 2025 Aumet Inc. Tous droits réservés pour la plateforme Pulse.',
@@ -1411,11 +1591,11 @@
         const isHidden = langMenu.classList.contains('hidden');
         if (isHidden) {
           langMenu.classList.remove('hidden');
-          langChevron.classList.add('rotate-180');
+          if (langChevron) langChevron.classList.add('rotate-180');
           langMenuBtn.setAttribute('aria-expanded', 'true');
         } else {
           langMenu.classList.add('hidden');
-          langChevron.classList.remove('rotate-180');
+          if (langChevron) langChevron.classList.remove('rotate-180');
           langMenuBtn.setAttribute('aria-expanded', 'false');
         }
       });
@@ -1424,7 +1604,7 @@
       document.addEventListener('click', function(event) {
         if (!langMenu.classList.contains('hidden')) {
           langMenu.classList.add('hidden');
-          langChevron.classList.remove('rotate-180');
+          if (langChevron) langChevron.classList.remove('rotate-180');
           langMenuBtn.setAttribute('aria-expanded', 'false');
         }
         const countryWrap = document.getElementById('hero-country-wrapper');
@@ -1494,8 +1674,29 @@
     
         // Close menu
         langMenu.classList.add('hidden');
-        langChevron.classList.remove('rotate-180');
+        if (langChevron) langChevron.classList.remove('rotate-180');
         langMenuBtn.setAttribute('aria-expanded', 'false');
       }
+
+      (function setupMobileStickyCta() {
+        const sticky = document.getElementById('mobile-sticky-cta');
+        const heroForm = document.getElementById('hero-onboard-form');
+        if (!sticky || !heroForm) return;
+        function updateSticky() {
+          if (window.matchMedia('(min-width: 1024px)').matches) {
+            sticky.classList.add('translate-y-full', 'pointer-events-none');
+            sticky.setAttribute('aria-hidden', 'true');
+            return;
+          }
+          const rect = heroForm.getBoundingClientRect();
+          const heroVisible = rect.bottom > 88;
+          sticky.classList.toggle('translate-y-full', heroVisible);
+          sticky.classList.toggle('pointer-events-none', heroVisible);
+          sticky.setAttribute('aria-hidden', heroVisible ? 'true' : 'false');
+        }
+        window.addEventListener('scroll', updateSticky, { passive: true });
+        window.addEventListener('resize', updateSticky);
+        updateSticky();
+      })();
     </script>
     </body></html>
